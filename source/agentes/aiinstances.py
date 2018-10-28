@@ -32,7 +32,6 @@ class Agente_Interativo():
     # Metodo que analisa a entrada e interage de acordo com os padroes de comparacao e parametro do agente
     def analizaEntrada(self, valor_entrada):
         if comparaValoresPadronizado(self.comparacao, self.parametro, valor_entrada):
-            print('DID ACTION')
             self.acao()
 
 

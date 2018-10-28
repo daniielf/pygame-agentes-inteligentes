@@ -11,11 +11,11 @@ _L1_batidas = 3     # QUANTIDADE DE BATIDAS (DEFAULT = 3)
 
 ## AJUSTES - DADOS DE AJUSTE PARA O JOGO
 
-_L1_penalidade_tempo_facil = 1          # PENALIDADE DE TEMPO PARA CADA BATIDA (DEFAULT = 2.5)
-_L1_penalidade_tempo_dificil = 2        # PENALIDADE DE TEMPO PARA CADA BATIDA (DEFAULT = 6)
+_L1_penalidade_tempo_facil = 2          # PENALIDADE DE TEMPO PARA CADA BATIDA (DEFAULT = 2.5)
+_L1_penalidade_tempo_dificil = 3        # PENALIDADE DE TEMPO PARA CADA BATIDA (DEFAULT = 6)
 
 _L1_tempo_jogo_dificil = 40             # TEMPO DE JOGO PARA O MODO DIFICIL (DEFAULT = 40)
-_L1_tempo_jogo_facil = 60               # TEMPO DE JOGO PARA O MODO FACIL (DEFAULT = 60)
+_L1_tempo_jogo_facil = 50               # TEMPO DE JOGO PARA O MODO FACIL (DEFAULT = 60)
 
 
 ##### LEVEL 2 - BALIZA COM OBSTACULOS
