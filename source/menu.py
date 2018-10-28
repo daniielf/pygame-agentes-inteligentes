@@ -185,7 +185,6 @@ class Menu:
         self.level_selected = dificuldade
         if self.level_selected is not None:
             pygame.mixer.music.stop()
-            print 'track:'+  str(self.track_selected)
             if main(screen, self.car_type, self.level_selected, self.track_selected) == False:
                 self.main_menu()
 

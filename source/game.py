@@ -7,14 +7,23 @@ from math import *
 from random import randint
 from functions import *
 import time
+import agentes.aiconfig as CONFIG
+import agentes.aiinstances as AI_INSTANCES
+
+
 
 def main(screen, car_type, level, track):
-
+        tentatives = 0
         class Car:
 
                 def __init__(self, game):
                         self.track = game.track
                         self.x, self.y = game.car_x, game.car_y
+                        self.agenteEscrita = None
+
+                        self.collideCallback = None
+
+                        self.setToEasy = False
 
                         # Carregando as imagens do carro
                         size_1 = load_image('carros'+str(game.car_type)+'-1.png').get_size()
@@ -29,10 +38,15 @@ def main(screen, car_type, level, track):
                         self.map_images = {'carro_normal': (self.images[0], self.images2[0]),\
                                            'carro_freiando': (self.images[1], self.images2[1]),\
                                            'carro_re': (self.images[2], self.images2[2])}
+
+                        if game.track == 1:
+                            self.timeStrikeValue = CONFIG._L1_penalidade_tempo_dificil
+
+                        if game.track == 2:
+                            self.timeStrikeValue = CONFIG._L2_penalidade_tempo_dificil
+
                         if game.track != 3:
-                            print game.track - 1
                             self.image = self.map_images['carro_normal'][game.track - 1]
-                            print self.image
                             self.rect = self.image.get_rect()
                             self.rect.center = self.x, self.y
                             self.height, self.width = self.rect.height, self.rect.width
@@ -70,6 +84,17 @@ def main(screen, car_type, level, track):
                             self.points = []
 
                         self.sound = pygame.mixer.Sound('sounds' + os.sep + 'batida.wav')
+
+
+                def setAgenteEscrita(self, agente):
+                        self.agenteEscrita = agente
+
+                def adjustLevel(self):
+                    self.setToEasy = True
+                    self.timeStrikeValue = CONFIG._L1_penalidade_tempo_facil
+
+                def setCollideCallback(self, callback):
+                        self.collideCallback = callback
 
                 def move(self, pressed_keys):
                         self.rotation_direction = 0
@@ -182,6 +207,11 @@ def main(screen, car_type, level, track):
                                                 car.sound.play()
                                                 self.chock_up_key = True
                                                 self.chock_down_key = False
+                                                if (self.collideCallback != None):
+                                                        self.collideCallback(['HIT', str('-' + self.timeStrikeValue)])
+                                                # if (self.agenteEscrita != None):
+                                                #         self.agenteEscrita.escreveLog(['HIT'])
+
 
                                 elif other.rect.collidepoint(self.points[3]) or other.rect.collidepoint(self.points[4])\
                                    or other.rect.collidepoint(self.points[5]):
@@ -191,6 +221,9 @@ def main(screen, car_type, level, track):
                                                 car.sound.play()
                                                 self.chock_down_key = True
                                                 self.chock_up_key = False
+                                                if (self.collideCallback != None):
+                                                        self.collideCallback(['HIT', str('-' + self.timeStrikeValue)])
+
 
                                 elif self.chock_up_key and -5 <= self.movement_speed <= 5:
                                         self.chock_up_key = False
@@ -297,11 +330,12 @@ def main(screen, car_type, level, track):
                                         self.seconds -= new_time - self.time
                                         self.time = new_time
 
+
                         else:
                                 self.seconds = 0.0
 
                 def show(self):
-                        text = 'Tempo: %1.2f' % self.seconds
+                        text = 'Tempo Restante: %1.2f' % self.seconds
                         write_in_screen(text, (255, 255, 255), 20, (10, 10))
 
         class Semaforo:
@@ -343,11 +377,15 @@ def main(screen, car_type, level, track):
                         self.chronometer = Chronometer()
                         self.car_type = None
                         self.level = None
+                        self.setToEasy = False
 
 
                         # Mapas para os obstaculos de acordo com o nivel do jogo
+                        if self.setToEasy:
+                            self.map_time = [[CONFIG._L1_tempo_jogo_facil, CONFIG._L2_penalidade_tempo_facil]]
+                        else:
+                            self.map_time = [[CONFIG._L1_tempo_jogo_dificil, CONFIG._L2_penalidade_tempo_dificil]]
 
-                        self.map_time = {1: (40.0, 60), 2: (30.0, 50), 3: (20.0, 40)}
                         self.parking1_size_map = {1: (553, 283, 100, 180), 2: (555, 283, 95, 180), 3: (557, 283, 90, 180)}
                         self.cars_y = {1: (170, 620), 2: (175, 615), 3: (185, 605)}
 
@@ -363,6 +401,7 @@ def main(screen, car_type, level, track):
                         self.in_check_point = False
                         self.in_ladeira = False
 
+
                 def track_01(self):
                         self.track = 1
                         self.car_x, self.car_y = 450, 650
@@ -372,10 +411,15 @@ def main(screen, car_type, level, track):
                         self.parking = Rect(self.parking1_size_map[self.level])
                         self.obstacles.append(obstacle1)
                         self.obstacles.append(obstacle2)
-                        self.time = self.map_time[self.level][0]
+                        self.time = self.map_time[0][0]
                         self.chronometer.start(self.time)
                         self.semaforo = Semaforo(3)
 
+                        self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/log_fase1.txt', '001', '1')
+
+                        self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L1_tentativas, 'gte', self.setToEasy)
+                        #self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L1_tempo_restante, 'lte', self.showTimeWarningAlert)
+                        # self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo()
 
 
                 def track_02(self):
@@ -410,7 +454,7 @@ def main(screen, car_type, level, track):
                         self.check_point2 = False
                         self.check_point3 = False
                         self.parked = False
-                        self.time = self.map_time[self.level][1]
+                        self.time = self.map_time[0][1]
                         self.chronometer.start(self.time)
                         self.semaforo = Semaforo(3)
                         self.semaforo.pos = (200, 380)
@@ -434,8 +478,8 @@ def main(screen, car_type, level, track):
                         mouse_pos = pygame.mouse.get_pos()
 
                         tempo_decorrido = self.time - self.chronometer.seconds
-                        tempo_descontado = 2 * car.chocks
-                        tempo_final = self.time - (self.chronometer.seconds - 2 * car.chocks)
+                        tempo_descontado = CONFIG._L1_penalidade_tempo_dificil * car.chocks
+                        tempo_final = tempo_decorrido + tempo_descontado
 
                         if status == 'win':
                                 botaozinho_image = load_image('continuar.bmp',2)
@@ -446,6 +490,8 @@ def main(screen, car_type, level, track):
                                 write_in_screen('%1.2f' % tempo_decorrido, (0, 0, 0), 20, (400,215))
                                 write_in_screen('%d' % tempo_descontado, (220, 0, 0), 20, (400, 250))
                                 write_in_screen('%1.2f' % tempo_final, (0, 150, 0), 25, (400, 280))
+
+                                self.agente_escrita.escreveLog(['VENCEU', str(self.chronometer.seconds)])      # ESCREVE VITORIA PARA O JOGADOR
 
                                 if botaozinho_rect.collidepoint(mouse_pos) and pygame.mouse.get_pressed()[0]:
                                         fase = self.shift_track()
@@ -459,7 +505,7 @@ def main(screen, car_type, level, track):
                                 if 218 <= mouse_pos[0] <= 392 and 352 <= mouse_pos[1] <= 368:
                                         image = lose_list[1]
                                         if pygame.mouse.get_pressed()[0]:
-                                                main(screen, car_type, level)
+                                                main(screen, car_type, level, self.track)
                                         
                                 elif 425 <= mouse_pos[0] <= 570 and 352 <= mouse_pos[1] <= 368:
                                         image = lose_list[2]
@@ -467,9 +513,11 @@ def main(screen, car_type, level, track):
                                                 return False
 
                                 screen.blit(image, (200, 150))
-                                write_in_screen('%1.2f' % tempo_decorrido, (0, 0, 0), 20, (400,215))
+                                write_in_screen('%1.2f' % tempo_decorrido, (0, 0, 0), 20, (400, 215))
                                 write_in_screen('%d' % tempo_descontado, (220, 0, 0), 20, (400, 250))
                                 write_in_screen('%1.2f' % tempo_final, (0, 150, 0), 25, (400, 280))
+                                self.agente_escrita.escreveLog(['PERDEU', str(self.chronometer.seconds)])      # ESCREVE VITORIA PARA O JOGADOR
+
 
                 def game(self, car, pressed_keys):
                         if self.track == 1:
@@ -480,7 +528,7 @@ def main(screen, car_type, level, track):
                                 tempo_decorrido = self.time - self.chronometer.seconds
                                 tempo_descontado = 2 * car.chocks
                                 tempo_final = self.time - (self.chronometer.seconds - 2 * car.chocks)
-                
+                                car.setCollideCallback(self.agente_escrita.escreveLog)
                                 if self.chronometer.seconds - 2 * car.chocks > 0:
                                         if game.parking.contains(car.rect) and car.movement_speed == 0\
                                            and not pressed_keys[K_UP] and not pressed_keys[K_DOWN]:
@@ -553,7 +601,6 @@ def main(screen, car_type, level, track):
                                         car.movement_direction, car.rotation_direction = 0, 0
                                         return self.box(car, 'lose')
                         if self.track == 3:
-                            print 'passou'
                             running = False
                             main3.main()
 
@@ -563,6 +610,7 @@ def main(screen, car_type, level, track):
         def write_in_screen(text, color, size, pos, bold = True):
                 font = pygame.font.SysFont("arial", size, bold = bold)
                 screen.blit(font.render(text, True, color), pos)
+
         
         # Iniciando o corpo do jogo
 
@@ -587,7 +635,8 @@ def main(screen, car_type, level, track):
 
         fullscreen = False
         running = True
-
+        tentatives += 1
+        print('Tentativa:', tentatives)
         while running:
 
                 for event in pygame.event.get():
@@ -604,7 +653,6 @@ def main(screen, car_type, level, track):
 
                 screen.blit(game.image, (0, 0))
                 car.rotaciona_imagem()
-
                 # Recebendo entradas de acessorios externos
                 pressed_keys = pygame.key.get_pressed()
 
@@ -630,11 +678,13 @@ def main(screen, car_type, level, track):
 
 
                 if game.semaforo.opened:
-                        game.chronometer.set_time()
-                        game.chronometer.run()
-                        # Movimentando o carro
-                        car.move(pressed_keys)
-                        car.accelerate(pressed_keys)
+                    game.chronometer.set_time()
+                    game.chronometer.run()
+                    #if (not game.setToEasy):
+                    #    game.agente_analise_tempo.analizaEntrada(game.chronometer.seconds)
+                    # Movimentando o carro
+                    car.move(pressed_keys)
+                    car.accelerate(pressed_keys)
 
                 if game.semaforo.closed:
                     if pressed_keys[pygame.K_UP]:
@@ -667,7 +717,6 @@ def main(screen, car_type, level, track):
                 car.x += x1 * movement
                 car.y += y1 * movement
                 mouse = pygame.mouse.get_pos()
-                print mouse
 
                 pygame.display.flip()
 
