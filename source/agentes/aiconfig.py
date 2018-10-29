@@ -23,7 +23,7 @@ _L1_tempo_jogo_facil = 50               # TEMPO DE JOGO PARA O MODO FACIL (DEFAU
 ## TOLERANCIA - DADOS DE TOLERANCIA
 
 _L2_tentativas = 3  # QUANTIDADE DE TENTATIVAS (DEFAULT = 3)
-_L2_tempo_restante = 40000   # TEMPO PARA ATIVAR AJUDA milisegundos (DEFAULT = 40000)
+_L2_tempo_restante = 40   # TEMPO PARA ATIVAR AJUDA milisegundos (DEFAULT = 40000)
 _L2_batidas = 2     # QUANTIDADE DE BATIDAS (DEFAULT = 2)
 
 ## AJUSTES - DADOS DE AJUSTE PARA O JOGO

@@ -381,12 +381,13 @@ def main(screen, car_type, level, track, retry = 1):
             self.displayAlertDone = False
             self.displayAlertTime = None
 
+            self.wroteRegistry = False
 
             # Mapas para os obstaculos de acordo com o nivel do jogo
             if self.setToEasy:
-                self.map_time = [[CONFIG._L1_tempo_jogo_facil, CONFIG._L2_penalidade_tempo_facil]]
+                self.map_time = [[CONFIG._L1_tempo_jogo_facil, CONFIG._L2_tempo_jogo_facil]]
             else:
-                self.map_time = [[CONFIG._L1_tempo_jogo_dificil, CONFIG._L2_penalidade_tempo_dificil]]
+                self.map_time = [[CONFIG._L1_tempo_jogo_dificil, CONFIG._L2_tempo_jogo_dificil]]
 
             self.parking1_size_map = {1: (553, 283, 100, 180), 2: (555, 283, 95, 180), 3: (557, 283, 90, 180)}
             self.cars_y = {1: (170, 620), 2: (175, 615), 3: (185, 605)}
@@ -449,6 +450,10 @@ def main(screen, car_type, level, track, retry = 1):
             obstacle4 = Cone((580, 640))
             obstacle5 = Cone((640, 395))
             obstacle6 = Cone((640, 615))
+
+            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/log_fase2.txt', '002', '1')
+            self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L2_tentativas, 'gte', self.adjustLevel)
+            self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L2_batidas, 'gte', self.displayAlert)
 
             for pos in self.obstaclesx_pos[self.level]:
                 obst = Cone(pos)
@@ -515,9 +520,10 @@ def main(screen, car_type, level, track, retry = 1):
                 write_in_screen('%d' % tempo_descontado, (220, 0, 0), 20, (400, 250))
                 write_in_screen('%1.2f' % tempo_final, (0, 150, 0), 25, (400, 280))
 
-                self.agente_escrita.escreveLog(['VENCEU', str(self.chronometer.seconds)])      # ESCREVE VITORIA PARA O JOGADOR
-
                 if botaozinho_rect.collidepoint(mouse_pos) and pygame.mouse.get_pressed()[0]:
+                    if (not self.wroteRegistry):
+                        self.wroteRegistry = True
+                        self.agente_escrita.escreveLog(['VENCEU', str(int(self.chronometer.seconds))])  # ESCREVE VITORIA PARA O JOGADOR
                     fase = self.shift_track()
                     return fase
                 return
@@ -529,21 +535,24 @@ def main(screen, car_type, level, track, retry = 1):
                 if 218 <= mouse_pos[0] <= 392 and 352 <= mouse_pos[1] <= 368:
                     image = lose_list[1]
                     if pygame.mouse.get_pressed()[0]:
-                        self.agente_escrita.escreveLog(
-                        ['REPETIR', str(self.chronometer.seconds)])  # ESCREVE RESTART PARA O JOGADOR
+                        if (not self.wroteRegistry):
+                            self.wroteRegistry = True
+                            self.agente_escrita.escreveLog(['PERDEU', str(int(self.chronometer.seconds))])  # ESCREVE 'PERDEU' PARA O JOGADOR
+                            self.agente_escrita.escreveLog(['REPETIR', str(int(self.chronometer.seconds))])  # ESCREVE RESTART PARA O JOGADOR
                         main(screen, car_type, level, self.track, tentatives + 1)
 
                 elif 425 <= mouse_pos[0] <= 570 and 352 <= mouse_pos[1] <= 368:
                     image = lose_list[2]
                     if pygame.mouse.get_pressed()[0]:
+                        if (not self.wroteRegistry):
+                            self.wroteRegistry = True
+                            self.agente_escrita.escreveLog(['PERDEU', str(self.chronometer.seconds)])  # ESCREVE 'PERDEU' PARA O JOGADOR
                         return False
 
                 screen.blit(image, (200, 150))
                 write_in_screen('%1.2f' % tempo_decorrido, (0, 0, 0), 20, (400, 215))
                 write_in_screen('%d' % tempo_descontado, (220, 0, 0), 20, (400, 250))
                 write_in_screen('%1.2f' % tempo_final, (0, 150, 0), 25, (400, 280))
-                self.agente_escrita.escreveLog(['PERDEU', str(self.chronometer.seconds)])      # ESCREVE 'PERDEU' PARA O JOGADOR
-
 
         def game(self, car, pressed_keys):
             if self.track == 1:
@@ -578,7 +587,7 @@ def main(screen, car_type, level, track, retry = 1):
                     object.varia_pos()
 
                 # tempo_decorrido = self.time - self.chronometer.seconds
-                # tempo_descontado = 2 * car.chocks
+                tempo_descontado = car.tempoDescontado
                 # tempo_final = self.time - (self.chronometer.seconds - 2 * car.chocks)
 
 
@@ -611,7 +620,7 @@ def main(screen, car_type, level, track, retry = 1):
                         and self.track_map.get_at((int(car.x), int(car.y))) != (255, 255, 255, 255):
                     self.in_check_point = False
 
-                if self.chronometer.seconds - 2 * car.chocks > 0:
+                if self.chronometer.seconds - tempo_descontado > 0:
                     if (self.check_point1 and self.check_point2 and self.check_point3 and self.in_ladeira) \
                             and self.parking.contains(car.rect) and car.movement_speed == 0 \
                             and not pressed_keys[K_UP] and not pressed_keys[K_DOWN]:
