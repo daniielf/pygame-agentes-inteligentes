@@ -204,11 +204,8 @@ def main(screen, car_type, level, track, retry = 1):
                         self.chock_up_key = True
                         self.chock_down_key = False
                         if (self.collideCallback != None):
-                            self.collideCallback(['HIT', '-' + str(self.timeStrikeValue)])
+                            self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
                             self.tempoDescontado += self.timeStrikeValue
-                            print "STRIKE -" + str(self.timeStrikeValue)
-                        # if (self.agenteEscrita != None):
-                        #         self.agenteEscrita.escreveLog(['HIT'])
 
 
                 elif other.rect.collidepoint(self.points[3]) or other.rect.collidepoint(self.points[4]) \
@@ -220,7 +217,8 @@ def main(screen, car_type, level, track, retry = 1):
                         self.chock_down_key = True
                         self.chock_up_key = False
                         if (self.collideCallback != None):
-                            self.collideCallback(['HIT', '-' + str(self.timeStrikeValue)])
+                            self.tempoDescontado += self.timeStrikeValue
+                            self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
 
 
                 elif self.chock_up_key and -5 <= self.movement_speed <= 5:
@@ -235,6 +233,7 @@ def main(screen, car_type, level, track, retry = 1):
                     if not self.chock_up_key:
                         self.movement_speed = (self.max_speed/8 + self.movement_speed/4)
                         self.chocks += 1
+                        self.tempoDescontado += self.timeStrikeValue
                         car.sound.play()
                         self.chock_up_key = True
                         self.chock_down_key = False
@@ -247,6 +246,7 @@ def main(screen, car_type, level, track, retry = 1):
                     if not self.chock_down_key:
                         self.movement_speed = -self.max_speed/8 + self.movement_speed/2
                         self.chocks += 1
+                        self.tempoDescontado += self.timeStrikeValue
                         car.sound.play()
                         self.chock_down_key = True
                         self.chock_up_key = False
@@ -377,6 +377,10 @@ def main(screen, car_type, level, track, retry = 1):
             self.level = None
             self.setToEasy = False
 
+            self.displayAlertStarted = False
+            self.displayAlertDone = False
+            self.displayAlertTime = None
+
 
             # Mapas para os obstaculos de acordo com o nivel do jogo
             if self.setToEasy:
@@ -406,7 +410,6 @@ def main(screen, car_type, level, track, retry = 1):
                     self.time = CONFIG._L1_tempo_jogo_facil
                     self.chronometer.start(self.time)
                     self.timeStrikeValue = CONFIG._L1_penalidade_tempo_facil
-                    print 'Time strike set to ' + str(self.timeStrikeValue)
                 if self.track == 2:
                     self.time = CONFIG._L2_tempo_jogo_facil
                     self.chronometer.start(self.time)
@@ -426,8 +429,9 @@ def main(screen, car_type, level, track, retry = 1):
             self.semaforo = Semaforo(3)
 
             self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/log_fase1.txt', '001', '1')
-
             self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L1_tentativas, 'gte', self.adjustLevel)
+            self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L1_batidas, 'gte', self.displayAlert)
+
             #self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L1_tempo_restante, 'lte', self.showTimeWarningAlert)
             # self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo()
 
@@ -484,6 +488,16 @@ def main(screen, car_type, level, track, retry = 1):
             if self.track == 3:
                 return False
 
+        def displayAlert(self):
+            if (not self.displayAlertStarted):
+                self.displayAlertTime = self.chronometer.seconds
+                self.displayAlertStarted = True
+            if (not self.displayAlertDone):
+                screen.blit(load_image('calma.bmp'), (50, 100))
+
+            if (self.displayAlertTime - 5 >= self.chronometer.seconds):
+                self.displayAlertDone = True
+
         def box(self, car, status = None):
             mouse_pos = pygame.mouse.get_pos()
 
@@ -515,6 +529,8 @@ def main(screen, car_type, level, track, retry = 1):
                 if 218 <= mouse_pos[0] <= 392 and 352 <= mouse_pos[1] <= 368:
                     image = lose_list[1]
                     if pygame.mouse.get_pressed()[0]:
+                        self.agente_escrita.escreveLog(
+                        ['REPETIR', str(self.chronometer.seconds)])  # ESCREVE RESTART PARA O JOGADOR
                         main(screen, car_type, level, self.track, tentatives + 1)
 
                 elif 425 <= mouse_pos[0] <= 570 and 352 <= mouse_pos[1] <= 368:
@@ -526,7 +542,7 @@ def main(screen, car_type, level, track, retry = 1):
                 write_in_screen('%1.2f' % tempo_decorrido, (0, 0, 0), 20, (400, 215))
                 write_in_screen('%d' % tempo_descontado, (220, 0, 0), 20, (400, 250))
                 write_in_screen('%1.2f' % tempo_final, (0, 150, 0), 25, (400, 280))
-                self.agente_escrita.escreveLog(['PERDEU', str(self.chronometer.seconds)])      # ESCREVE VITORIA PARA O JOGADOR
+                self.agente_escrita.escreveLog(['PERDEU', str(self.chronometer.seconds)])      # ESCREVE 'PERDEU' PARA O JOGADOR
 
 
         def game(self, car, pressed_keys):
@@ -534,7 +550,7 @@ def main(screen, car_type, level, track, retry = 1):
                 for object in self.obstacles:
                     screen.blit(object.image, (object.rect.x, object.rect.y))
                     car.collid(object, 'car')
-
+                    self.agente_feedback.analizaEntrada(car.chocks)
                 # tempo_decorrido = self.time - self.chronometer.seconds
                 tempo_descontado = car.tempoDescontado
                 # tempo_final = self.time - (self.chronometer.seconds - car.tempoDescontado)
@@ -561,9 +577,9 @@ def main(screen, car_type, level, track, retry = 1):
                     car.collid(object, 'cone')
                     object.varia_pos()
 
-                tempo_decorrido = self.time - self.chronometer.seconds
-                tempo_descontado = 2 * car.chocks
-                tempo_final = self.time - (self.chronometer.seconds - 2 * car.chocks)
+                # tempo_decorrido = self.time - self.chronometer.seconds
+                # tempo_descontado = 2 * car.chocks
+                # tempo_final = self.time - (self.chronometer.seconds - 2 * car.chocks)
 
 
                 if self.track_map.get_at((int(car.x), int(car.y))) == (0, 255, 0, 255):
@@ -571,7 +587,6 @@ def main(screen, car_type, level, track, retry = 1):
 
                 if self.track_map.get_at((int(car.x), int(car.y))) == (255, 0, 0, 255):
                     if not (sin(car.rotation_angule * pi/180) <= 0.85 and -0.5 <= cos(car.rotation_angule * pi/180) <= 0.5):
-                        #print sin(car.rotation_angule * pi/180), cos(car.rotation_angule * pi/180)
                         car.y += 0.5
                         self.in_ladeira = True
 
@@ -649,11 +664,11 @@ def main(screen, car_type, level, track, retry = 1):
     car = Car(game)
     game.agente_dificuldade.analizaEntrada(tentatives)
 
+
     fullscreen = False
     running = True
 
     while running:
-
         for event in pygame.event.get():
             if event.type == QUIT:
                 exit()
@@ -702,11 +717,12 @@ def main(screen, car_type, level, track, retry = 1):
         if game.semaforo.closed:
             if pressed_keys[pygame.K_UP]:
                 car.chocks += 0.03
+                car.tempoDescontado = int(car.chocks * car.timeStrikeValue)
 
 
         game.chronometer.show()
-        write_in_screen('Batidas: %d' % car.chocks, (255, 255, 255), 20, (10, 30))
-        write_in_screen('Tentativa de Avancar Sinal Vermelho:Tempo Descontado =  %d segundos' % car.chocks,
+        write_in_screen('Infracoes: %d' % car.chocks, (255, 255, 255), 20, (10, 30))
+        write_in_screen('Tempo Descontado =  %d segundos' % car.tempoDescontado,
                         (255, 255, 255), 20, (10, 50))
 
         #if movement_direction != 0:
