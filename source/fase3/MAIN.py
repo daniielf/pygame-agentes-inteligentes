@@ -48,6 +48,10 @@ TRAFFIC_COUNT = 45
 CENTER_W = -1
 CENTER_H = -1
 
+## AGENTES IMPORT
+from ..agentes import aiinstances as AI_INSTANCES
+from ..agentes import aiconfig as AI_CONFIG
+
 
 #Main function.
 def main():
@@ -64,6 +68,9 @@ def main():
     stop_alert = leis_transito.StopAlert()
     info = menu.Alert()
     pointer = direction.Tracker(int(CENTER_W * 2), int(CENTER_H * 2))
+
+
+    gameTimer =
 
 #create sprite groups.
     map_s     = pygame.sprite.Group()
