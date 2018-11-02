@@ -44,13 +44,13 @@ import time
 # Import game modules.
 from loader import load_image
 
-TRAFFIC_COUNT = 45
+TRAFFIC_COUNT = 200
 CENTER_W = -1
 CENTER_H = -1
 
 ## AGENTES IMPORT
-from ..agentes import aiinstances as AI_INSTANCES
-from ..agentes import aiconfig as AI_CONFIG
+from agentes3 import aiinstances as AI_INSTANCES
+from agentes3 import aiconfig as AI_CONFIG
 
 
 #Main function.
@@ -68,9 +68,7 @@ def main():
     stop_alert = leis_transito.StopAlert()
     info = menu.Alert()
     pointer = direction.Tracker(int(CENTER_W * 2), int(CENTER_H * 2))
-
-
-    gameTimer =
+    #gameTimer =
 
 #create sprite groups.
     map_s     = pygame.sprite.Group()
@@ -117,7 +115,6 @@ def main():
 
     while running:
 #Render loop.
-
 #Check for menu/reset, (keyup event - trigger ONCE)
         for event in pygame.event.get():
             if event.type == pygame.KEYUP:
@@ -224,16 +221,17 @@ def main():
         celular_alert.grass(screen.get_at(((int(CENTER_W - 5), int(CENTER_H - 5)))).g, car.speed)
         if (int((target.timeleft / 60) % 60) % 20 == 0):
             celular_alert.visibility = True
+            celular_alert.startTimer()
 
         if (target.timeleft > 0 and celular_alert.visibility is True):
             celular_s.draw(screen)
             keys = pygame.key.get_pressed()
-            celular_alert.startTimer()
             if (keys[K_c] and car.speed > 0.4):
-                target.score -= 15
+                target.score -= 50
                 celular_alert.visibility = False
             if (keys[K_c] and car.speed <= 0.4):
                 target.score += 200
+                celular_alert.tocando = False
                 celular_alert.visibility = False
             if (not celular_alert.cel_time()):
                 target.score -= 100

@@ -12,8 +12,9 @@ import agentes.aiinstances as AI_INSTANCES
 
 
 
-def main(screen, car_type, level, track, retry = 1):
+def main(screen, car_type, level, track, retry = 1, userID = '001'):
     tentatives = retry
+    _userid = userID
     class Car:
 
         def __init__(self, game):
@@ -170,7 +171,7 @@ def main(screen, car_type, level, track, retry = 1):
             time_passed = self.clock.tick(fps)
             seconds = time_passed / 1000.0
             # Movimento em pixels
-            return  self.rotation_speed*seconds, self.movement_speed*seconds
+            return self.rotation_speed*seconds, self.movement_speed*seconds
 
         def collide_screen(self, resolution):
             if self.x <= self.width / 2:
@@ -381,6 +382,10 @@ def main(screen, car_type, level, track, retry = 1):
             self.displayAlertDone = False
             self.displayAlertTime = None
 
+            self.displayTimeHelpAlertStarted = False
+            self.displayTimeHelpAlertDone = False
+            self.displayTimeHelpAlertTimer = None
+
             self.wroteRegistry = False
 
             # Mapas para os obstaculos de acordo com o nivel do jogo
@@ -429,9 +434,10 @@ def main(screen, car_type, level, track, retry = 1):
             self.chronometer.start(self.time)
             self.semaforo = Semaforo(3)
 
-            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/log_fase1.txt', '001', '1')
-            self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L1_tentativas, 'gte', self.adjustLevel)
-            self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L1_batidas, 'gte', self.displayAlert)
+            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + _userid + '.txt', _userid, '1')
+            self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_tentativas, 'gte', self.adjustLevel)
+            self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_batidas, 'gte', self.displayInfractionAlert)
+            self.agente_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_tempo_restante, 'lte', self.displayTimeHelpAlert)
 
             #self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L1_tempo_restante, 'lte', self.showTimeWarningAlert)
             # self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo()
@@ -451,9 +457,10 @@ def main(screen, car_type, level, track, retry = 1):
             obstacle5 = Cone((640, 395))
             obstacle6 = Cone((640, 615))
 
-            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/log_fase2.txt', '002', '1')
-            self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L2_tentativas, 'gte', self.adjustLevel)
-            self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L2_batidas, 'gte', self.displayAlert)
+            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/log_fase2.txt', _userid, '1')
+            self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_tentativas, 'gte', self.adjustLevel)
+            self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_batidas, 'gte', self.displayInfractionAlert)
+            self.agente_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_tempo_restante, 'lte', self.displayTimeHelpAlert_2)
 
             for pos in self.obstaclesx_pos[self.level]:
                 obst = Cone(pos)
@@ -493,7 +500,7 @@ def main(screen, car_type, level, track, retry = 1):
             if self.track == 3:
                 return False
 
-        def displayAlert(self):
+        def displayInfractionAlert(self):
             if (not self.displayAlertStarted):
                 self.displayAlertTime = self.chronometer.seconds
                 self.displayAlertStarted = True
@@ -502,6 +509,24 @@ def main(screen, car_type, level, track, retry = 1):
 
             if (self.displayAlertTime - 5 >= self.chronometer.seconds):
                 self.displayAlertDone = True
+
+        def displayTimeHelpAlert(self):
+            if (not self.displayTimeHelpAlertStarted):
+                self.displayTimeHelpAlertTimer = self.chronometer.seconds
+                self.displayTimeHelpAlertStarted = True
+            if (not self.displayTimeHelpAlertDone):
+                screen.blit(load_image('help.bmp'), (50, 100))
+            if (self.displayTimeHelpAlertTimer - 5 >= self.chronometer.seconds):
+                self.displayTimeHelpAlertDone = True
+
+        def displayTimeHelpAlert_2(self):
+            if (not self.displayTimeHelpAlertStarted):
+                self.displayTimeHelpAlertTimer = self.chronometer.seconds
+                self.displayTimeHelpAlertStarted = True
+            if (not self.displayTimeHelpAlertDone):
+                screen.blit(load_image('help2.bmp'), (50, 100))
+            if (self.displayTimeHelpAlertTimer - 5 >= self.chronometer.seconds):
+                self.displayTimeHelpAlertDone = True
 
         def box(self, car, status = None):
             mouse_pos = pygame.mouse.get_pos()
@@ -713,7 +738,6 @@ def main(screen, car_type, level, track, retry = 1):
             game.semaforo2.pos = (200, 380)
             game.semaforo2.abre_semaforo()
             game.semaforo2.show()
-            write_in_screen('Entrou: %d' % car.chocks, (255, 0, 0), 20, (10, 70))
 
 
         if game.semaforo.opened:
@@ -756,6 +780,8 @@ def main(screen, car_type, level, track, retry = 1):
         car.y += y1 * movement
         mouse = pygame.mouse.get_pos()
 
+        if (game.semaforo2.opened):
+            game.agente_tempo.analizaEntrada(game.chronometer.seconds)
         pygame.display.flip()
 
 
