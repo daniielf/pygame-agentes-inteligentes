@@ -235,6 +235,7 @@ def main():
                 celular_alert.visibility = False
             if (not celular_alert.cel_time()):
                 target.score -= 100
+                celular_alert.tocando = False
                 celular_alert.visibility = False
 
         stop_alert.stop_car(car.speed)
