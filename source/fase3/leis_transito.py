@@ -121,13 +121,9 @@ class CelularAlert(pygame.sprite.Sprite):
         #         self.visibility = False
 
     def startTimer(self):
-        print "TIME STARTED"
         if (not self.tocando):
-            self.chron.start(10.0)
-            self.chron.run()
-            print ('CEL TIME STARt: ' + str(self.chron.seconds))
             self.tocando = True
-
+            self.chron.start(7.0)
 
     def cel_time(self):
         if (self.tocando):

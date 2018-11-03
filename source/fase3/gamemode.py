@@ -28,7 +28,7 @@ import pygame, maps
 from pygame.locals import *
 from loader import load_image
 from random import randint
-
+from agentes3 import aiconfig as AICONFIG
 PENALTY_COOL = 180
 FLAG_SCORE = 15
 CRASH_PENALTY = -2
@@ -41,15 +41,15 @@ COUNTDOWN_EXTEND = 750
 #and keeps track of player score. It also manages the countdown timer.
 class Finish(pygame.sprite.Sprite):
 #The player has collided and should pick the flag.
-    def claim_flag(self):
+    def claim_flag(self, extraTime = AICONFIG._L3_tempo_extra_dificil):
         self.score += FLAG_SCORE
-        self.timeleft += COUNTDOWN_EXTEND
+        self.timeleft += extraTime * 60
         if self.timeleft > COUNTDOWN_FULL:
             self.timeleft = COUNTDOWN_FULL
 #The player has crashed into another vehicle, deduct some points.
     def car_crash(self):
         if (self.penalty_cool == 0):
-            print ('ok')
+            print ''
             # self.score -= CRASH_PENALTY
             # self.penalty_cool = PENALTY_COOL
 #Find an adequate point to spawn flag.     
@@ -72,7 +72,7 @@ class Finish(pygame.sprite.Sprite):
 #Initialize.. yes.
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = load_image('finish.png', False)
+        self.image = load_image('chron.png', False)
         self.rect = self.image.get_rect()
         self.x = 5
         self.y = 5

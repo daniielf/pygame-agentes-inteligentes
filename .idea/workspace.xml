@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6603d37a-804a-4261-8bcd-47c7c600ca93" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/source/fase3/MAIN.py" afterPath="$PROJECT_DIR$/source/fase3/MAIN.py" />
+      <change beforePath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" afterPath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
+      <change beforePath="$PROJECT_DIR$/source/fase3/gamemode.py" afterPath="$PROJECT_DIR$/source/fase3/gamemode.py" />
       <change beforePath="$PROJECT_DIR$/source/fase3/leis_transito.py" afterPath="$PROJECT_DIR$/source/fase3/leis_transito.py" />
+      <change beforePath="$PROJECT_DIR$/source/game.py" afterPath="$PROJECT_DIR$/source/game.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,46 +21,58 @@
       <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="740" column="0" lean-forward="false" selection-start-line="740" selection-start-column="0" selection-end-line="740" selection-end-column="0" />
+            <state relative-caret-position="137">
+              <caret line="435" column="45" lean-forward="false" selection-start-line="435" selection-start-column="37" selection-end-line="435" selection-end-column="45" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <element signature="e#1945#3860#0" expanded="false" />
-                <element signature="e#4170#4654#0" expanded="false" />
-                <element signature="e#4712#6124#0" expanded="false" />
-                <element signature="e#6176#6415#0" expanded="false" />
-                <element signature="e#6465#6790#0" expanded="false" />
-                <element signature="e#6846#7173#0" expanded="false" />
-                <element signature="e#7219#7278#0" expanded="false" />
-                <element signature="e#7338#7525#0" expanded="false" />
-                <element signature="e#7585#8120#0" expanded="false" />
-                <element signature="e#8180#12240#0" expanded="false" />
-                <element signature="e#12271#12431#0" expanded="false" />
-                <element signature="e#12458#13502#0" expanded="false" />
-                <element signature="e#13536#14518#0" expanded="false" />
+                <element signature="e#1944#3859#0" expanded="false" />
+                <element signature="e#4169#4653#0" expanded="false" />
+                <element signature="e#4711#6123#0" expanded="false" />
+                <element signature="e#6175#6414#0" expanded="false" />
+                <element signature="e#6464#6789#0" expanded="false" />
+                <element signature="e#6845#7172#0" expanded="false" />
+                <element signature="e#7218#7277#0" expanded="false" />
+                <element signature="e#7337#7524#0" expanded="false" />
+                <element signature="e#7584#8119#0" expanded="false" />
+                <element signature="e#8179#12239#0" expanded="false" />
+                <element signature="e#12270#12430#0" expanded="false" />
+                <element signature="e#12457#13501#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MAIN.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MAIN.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/fase3/MAIN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="237" column="45" lean-forward="false" selection-start-line="237" selection-start-column="45" selection-end-line="237" selection-end-column="45" />
+            <state relative-caret-position="-268">
+              <caret line="276" column="34" lean-forward="false" selection-start-line="276" selection-start-column="34" selection-end-line="276" selection-end-column="34" />
               <folding>
+                <element signature="n#!!doc" expanded="false" />
                 <element signature="e#1178#1188#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leis_transito.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/fase3/leis_transito.py">
+      <file leaf-file-name="aiconfig.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="133" column="38" lean-forward="false" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
+            <state relative-caret-position="95">
+              <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gamemode.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/fase3/gamemode.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding>
+                <element signature="e#1202#1221#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,37 +81,40 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shock</find>
-      <find>.sho</find>
-      <find>.cho</find>
-      <find>.chocks =</find>
-      <find>.chocks +</find>
-      <find>Tempo</find>
-      <find>Infraco</find>
-      <find>opened</find>
-      <find>chocks += 1</find>
-      <find>semaforo</find>
-      <find>move</find>
-      <find>self.chocks</find>
-      <find>self\.chocks \+\= 1\n</find>
-      <find>chocks</find>
-      <find>HIT</find>
-      <find>VENCEU</find>
-      <find>PERDEU</find>
-      <find>agente_dificuldade</find>
-      <find>adjustLevel</find>
-      <find>displayAlert</find>
-      <find>box</find>
-      <find>box(</find>
-      <find>'001'</find>
-      <find>self.displayAlert</find>
-      <find>displayAlert(</find>
-      <find>gameTimer =</find>
+      <find>win</find>
+      <find>time</find>
+      <find>generate_finish</find>
+      <find>target</find>
+      <find>%60</find>
       <find>TRAFFIC_COUNT</find>
-      <find>ok</find>
-      <find>cel_time</find>
-      <find>celular_alert</find>
+      <find>screen</find>
+      <find>tracks_s</find>
+      <find>main()</find>
+      <find>traffic</find>
+      <find>running</find>
+      <find>.g</find>
+      <find>.grass</find>
+      <find>CENTER_H</find>
+      <find>self.</find>
+      <find>main3</find>
+      <find>font</find>
+      <find>init</find>
+      <find>pygame.init</find>
+      <find>chron</find>
+      <find>.png</find>
+      <find>claim</find>
+      <find>timeleft</find>
+      <find>INSTANCE</find>
+      <find>extraTimeValue</find>
+      <find>hardmodeOn</find>
+      <find>setHardmode</find>
+      <find>count</find>
+      <find>5000</find>
+      <find>celular</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -103,16 +122,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/source/fase3/gamemode.py" />
         <option value="$PROJECT_DIR$/source/fase3/loader.py" />
         <option value="$PROJECT_DIR$/source/fase3/bounds.py" />
         <option value="$PROJECT_DIR$/source/agentes/aiinstances.py" />
         <option value="$PROJECT_DIR$/source/menu.py" />
-        <option value="$PROJECT_DIR$/source/game.py" />
         <option value="$PROJECT_DIR$/source/agentes/aiconfig.py" />
+        <option value="$PROJECT_DIR$/source/game.py" />
+        <option value="$PROJECT_DIR$/source/fase3/leis_transito.py" />
+        <option value="$PROJECT_DIR$/source/fase3/gamemode.py" />
         <option value="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
         <option value="$PROJECT_DIR$/source/fase3/MAIN.py" />
-        <option value="$PROJECT_DIR$/source/fase3/leis_transito.py" />
       </list>
     </option>
   </component>
@@ -265,9 +284,10 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14787701" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24088748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29793978" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -277,7 +297,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -286,18 +305,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/fase3/gamemode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/tracks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -427,6 +439,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="false" />
             <element signature="e#1178#1188#0" expanded="true" />
           </folding>
         </state>
@@ -444,6 +457,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#!!doc" expanded="false" />
             <element signature="e#1178#1188#0" expanded="true" />
           </folding>
         </state>
@@ -486,13 +500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/fase3/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1321">
-          <caret line="62" column="59" lean-forward="true" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
@@ -510,24 +517,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/fase3/gamemode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/tracks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="44" lean-forward="false" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/fase3/maps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="63" lean-forward="false" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -571,36 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/agentes/aiinstances.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="45" column="25" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="740" column="0" lean-forward="false" selection-start-line="740" selection-start-column="0" selection-end-line="740" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#1945#3860#0" expanded="false" />
-            <element signature="e#4170#4654#0" expanded="false" />
-            <element signature="e#4712#6124#0" expanded="false" />
-            <element signature="e#6176#6415#0" expanded="false" />
-            <element signature="e#6465#6790#0" expanded="false" />
-            <element signature="e#6846#7173#0" expanded="false" />
-            <element signature="e#7219#7278#0" expanded="false" />
-            <element signature="e#7338#7525#0" expanded="false" />
-            <element signature="e#7585#8120#0" expanded="false" />
-            <element signature="e#8180#12240#0" expanded="false" />
-            <element signature="e#12271#12431#0" expanded="false" />
-            <element signature="e#12458#13502#0" expanded="false" />
-            <element signature="e#13536#14518#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -612,7 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -620,41 +582,105 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
           <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/maps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="5" column="63" lean-forward="false" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="96" column="5" lean-forward="false" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/traffic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-572">
-          <caret line="19" column="2" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+        <state relative-caret-position="169">
+          <caret line="40" column="14" lean-forward="false" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/agentes/aiinstances.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiinstances.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/leis_transito.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="435" column="45" lean-forward="false" selection-start-line="435" selection-start-column="37" selection-end-line="435" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#1944#3859#0" expanded="false" />
+            <element signature="e#4169#4653#0" expanded="false" />
+            <element signature="e#4711#6123#0" expanded="false" />
+            <element signature="e#6175#6414#0" expanded="false" />
+            <element signature="e#6464#6789#0" expanded="false" />
+            <element signature="e#6845#7172#0" expanded="false" />
+            <element signature="e#7218#7277#0" expanded="false" />
+            <element signature="e#7337#7524#0" expanded="false" />
+            <element signature="e#7584#8119#0" expanded="false" />
+            <element signature="e#8179#12239#0" expanded="false" />
+            <element signature="e#12270#12430#0" expanded="false" />
+            <element signature="e#12457#13501#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/gamemode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#1202#1221#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        <state relative-caret-position="95">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/MAIN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="237" column="45" lean-forward="false" selection-start-line="237" selection-start-column="45" selection-end-line="237" selection-end-column="45" />
+        <state relative-caret-position="-268">
+          <caret line="276" column="34" lean-forward="false" selection-start-line="276" selection-start-column="34" selection-end-line="276" selection-end-column="34" />
           <folding>
+            <element signature="n#!!doc" expanded="false" />
             <element signature="e#1178#1188#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/fase3/leis_transito.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="133" column="38" lean-forward="false" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>

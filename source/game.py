@@ -11,7 +11,6 @@ import agentes.aiconfig as CONFIG
 import agentes.aiinstances as AI_INSTANCES
 
 
-
 def main(screen, car_type, level, track, retry = 1, userID = '001'):
     tentatives = retry
     _userid = userID
@@ -730,9 +729,12 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             else: screen = pygame.display.set_mode((1024,768), 0, 32)
 
 
-        game.semaforo.abre_semaforo()
-        game.semaforo.show()
-
+        if (track == 1):
+            game.semaforo.abre_semaforo()
+            game.semaforo.show()
+        if (track == 2):
+            game.semaforo2.abre_semaforo()
+            game.semaforo2.show()
 
         if randint(0,50) == 5 and game.track == 2:
             game.semaforo2.pos = (200, 380)
@@ -740,12 +742,18 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             game.semaforo2.show()
 
 
-        if game.semaforo.opened:
-            game.chronometer.set_time()
-            game.chronometer.run()
+
+        if (game.semaforo.opened):
+            if (track == 1):
+                game.chronometer.set_time()
+                game.chronometer.run()
+            if (track == 2):
+                game.chronometer2.set_time()
+                game.chronometer2.run()
             # Movimentando o carro
             car.move(pressed_keys)
             car.accelerate(pressed_keys)
+
 
         if game.semaforo.closed:
             if pressed_keys[pygame.K_UP]:
@@ -780,7 +788,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
         car.y += y1 * movement
         mouse = pygame.mouse.get_pos()
 
-        if (game.semaforo2.opened):
+        if (track == 2 and game.semaforo2.opened):
             game.agente_tempo.analizaEntrada(game.chronometer.seconds)
         pygame.display.flip()
 
