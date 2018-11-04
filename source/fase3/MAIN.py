@@ -60,7 +60,7 @@ class GameControl:
     def setHardmode(self):
         if (self.hardMode is False):
             self.hardMode = True
-            self.extraTimeValue = AI_CONFIG._L3_quantidade_veiculos_dificil
+            self.extraTimeValue = AI_CONFIG._L3_tempo_extra_dificil
             self.quantidadeVeiculos = AI_CONFIG._L3_quantidade_veiculos_dificil
             tracks_s = []
             for count in range(0, gameControl.quantidadeVeiculos):
@@ -160,6 +160,7 @@ def main():
     while running:
         # Render loop.
         # Check for menu/reset, (keyup event - trigger ONCE)
+        keys = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.KEYUP:
                 if keys[K_m]:
@@ -184,7 +185,6 @@ def main():
                 break
 
         # Check for key input. (KEYDOWN, trigger often)
-        keys = pygame.key.get_pressed()
         if (target.timeleft > 0):
             if keys[K_LEFT]:
                 car.steerleft()
@@ -260,20 +260,20 @@ def main():
         if (celular_alert.tocando):
             celular_alert.chron.run()
 
-        if (target.timeleft > 0 and celular_alert.visibility is True):
+        if (target.timeleft > 0 and celular_alert.visibility is True and celular_alert.tocando is True):
             celular_s.draw(screen)
             keys = pygame.key.get_pressed()
             if (keys[K_c] and car.speed > 0.4):
-                celular_alert.tocando = False
                 celular_alert.visibility = False
+                celular_alert.tocando = False
                 target.score -= 70
-            if (keys[K_c] and car.speed <= 0.4):
+            if (celular_alert.visibility is True and celular_alert.tocando is True and keys[K_c] and car.speed <= 0.4):
+                celular_alert.visibility = False
+                celular_alert.tocando = False
                 target.score += 200
-                celular_alert.tocando = False
-                celular_alert.visibility = False
             if (not celular_alert.cel_time()):
-                celular_alert.tocando = False
                 celular_alert.visibility = False
+                celular_alert.tocando = False
                 target.score -= 100
 
         stop_alert.stop_car(car.speed)

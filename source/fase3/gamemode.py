@@ -44,6 +44,7 @@ class Finish(pygame.sprite.Sprite):
     def claim_flag(self, extraTime = AICONFIG._L3_tempo_extra_dificil):
         self.score += FLAG_SCORE
         self.timeleft += extraTime * 60
+        print ('Got Extra Time:' + str(extraTime))
         if self.timeleft > COUNTDOWN_FULL:
             self.timeleft = COUNTDOWN_FULL
 #The player has crashed into another vehicle, deduct some points.
