@@ -23,7 +23,6 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
 
             self.collideCallback = None
             self.tempoDescontado = 0
-            print 'Tempo descontado set to 0 \n'
             # Carregando as imagens do carro
             size_1 = load_image('carros'+str(game.car_type)+'-1.png').get_size()
             size_2 = load_image('carros'+str(game.car_type)+'-2.png').get_size()
@@ -40,7 +39,6 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
 
             if game.track == 1:
                 self.timeStrikeValue = CONFIG._L1_penalidade_tempo_dificil
-                print 'STRIKE SET TO ' + str (self.timeStrikeValue)
 
             if game.track == 2:
                 self.timeStrikeValue = CONFIG._L2_penalidade_tempo_dificil
@@ -437,9 +435,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_batidas, 'gte', self.displayInfractionAlert)
             self.agente_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_tempo_restante, 'lte', self.displayTimeHelpAlert)
 
-            #self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L1_tempo_restante, 'lte', self.showTimeWarningAlert)
-            # self.agente_analise_tempo = AI_INSTANCES.Agente_Interativo()
-
+            self.agente_escrita.escreveLog(['NOVOJOGO', '-'])
 
         def track_02(self):
             self.track = 2
@@ -486,7 +482,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
 
             self.semaforo2 = Semaforo(3)
             self.semaforo2.pos = (200, 380)
-            self.agente_escrita.escreveLog(['NOVOJOGO', str(int(self.chronometer.seconds))])  # ESCREVE 'NOVOJOGO' PARA O JOGADOR
+            self.agente_escrita.escreveLog(['NOVOJOGO', '-'])  # ESCREVE 'NOVOJOGO' PARA O JOGADOR
 
         def track_03(self):
             self.track = 3
@@ -501,6 +497,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 return True
             if self.track == 3:
                 return False
+            self.agente_escrita.escreveLog(['PASSOUFASE', str(self.track)])
 
         def displayInfractionAlert(self):
             if (not self.displayAlertStarted):
@@ -568,7 +565,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                             self.wroteRegistry = True
                             self.agente_escrita.escreveLog(['PERDEU', str(int(self.chronometer.seconds))])  # ESCREVE 'PERDEU' PARA O JOGADOR
                             self.agente_escrita.escreveLog(['REPETIR', str(int(self.chronometer.seconds))])  # ESCREVE RESTART PARA O JOGADOR
-                        main(screen, car_type, level, self.track, tentatives + 1)
+                        main(screen, car_type, level, self.track, tentatives + 1, _userid)
 
                 elif 425 <= mouse_pos[0] <= 570 and 352 <= mouse_pos[1] <= 368:
                     image = lose_list[2]
@@ -666,7 +663,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                     return self.box(car, 'lose')
             if self.track == 3:
                 running = False
-                main3.main()
+                main3.main(_userid)
 
 
 
@@ -695,7 +692,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
     if (track == 2):
         game.track_02()
     if (track == 3):
-        main3.main()
+        main3.main(_userid)
 
 
     car = Car(game)
@@ -732,10 +729,10 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             if fullscreen: screen = pygame.display.set_mode((1024,768), FULLSCREEN, 32)
             else: screen = pygame.display.set_mode((1024,768), 0, 32)
 
-        if (track == 1):
+        if (game.track == 1):
             game.semaforo.abre_semaforo()
             game.semaforo.show()
-        if (track == 2):
+        if (game.track == 2):
             game.semaforo2.abre_semaforo()
             game.semaforo2.show()
 
@@ -746,7 +743,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
 
 
 
-        if (track == 1):
+        if (game.track == 1):
             if (game.semaforo.opened):
                 game.chronometer.set_time()
                 game.chronometer.run()
@@ -756,7 +753,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 if pressed_keys[pygame.K_UP]:
                     car.chocks += 0.03
                     car.tempoDescontado = int(car.chocks * car.timeStrikeValue)
-        if (track == 2):
+        if (game.track == 2):
             if (game.semaforo2.opened):
                 game.chronometer.set_time()
                 game.chronometer.run()
@@ -797,7 +794,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
         car.y += y1 * movement
         mouse = pygame.mouse.get_pos()
 
-        if (track == 2 and game.semaforo2.opened):
+        if (game.track == 2 and game.semaforo2.opened):
             game.agente_tempo.analizaEntrada(game.chronometer.seconds)
             if (not game.check_point1):
                 screen.blit(load_image('checkflag.png'), (360, 260))

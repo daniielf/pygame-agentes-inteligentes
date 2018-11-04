@@ -62,13 +62,14 @@ class GameControl:
             self.hardMode = True
             self.extraTimeValue = AI_CONFIG._L3_tempo_extra_dificil
             self.quantidadeVeiculos = AI_CONFIG._L3_quantidade_veiculos_dificil
-            tracks_s = []
             for count in range(0, gameControl.quantidadeVeiculos):
                 traffic_s.add(traffic.Traffic())
 
 
 gameControl = GameControl()
 agenteDificuldade = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_pontos, 'gte', gameControl.setHardmode)
+
+
 
 # Main function.
 # initialization
@@ -125,8 +126,8 @@ timer_alert_s = pygame.sprite.Group()
 bound_alert_s = pygame.sprite.Group()
 menu_alert_s = pygame.sprite.Group()
 
-def main():
-
+def main(id = '001'):
+    agenteEscrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + id + '.txt', id, 3)
     running = True
     # generate tiles
     for tile_num in range(0, len(maps.map_tile)):
@@ -169,6 +170,7 @@ def main():
                     else:
                         info.visibility = True
                 if (keys[K_p]):
+                    agenteEscrita.escreveLog(['REINICIOU', str(target.score)])
                     car.reset()
                     target.reset()
                 if (keys[K_q]):
@@ -182,6 +184,7 @@ def main():
                 aux = menu2()
                 aux.main_menu()
                 running = False
+                agenteEscrita.escreveLog(['SAIU', '-'])
                 break
 
         # Check for key input. (KEYDOWN, trigger often)
@@ -251,10 +254,11 @@ def main():
             timer_alert_s.draw(screen)
             car.speed = 0
             text_score = font.render('Pontuacao Final: ' + str(target.score), 1, (224, 16, 16))
-            textpos_score = text_fps.get_rect(centery=CENTER_H + 56, centerx=CENTER_W - 20)
+            agenteEscrita.escreveLog(['TERMINOU', str(target.score)])
+            textpos_score = text_fps.get_rect(centery=CENTER_H + 30, centerx=CENTER_W)
 
         celular_alert.grass(screen.get_at(((int(CENTER_W - 5), int(CENTER_H - 5)))).g, car.speed)
-        if (int((target.timeleft / 60) % 60) % 20 == 0):
+        if (target.totalTime > 300 and int((target.totalTime / 60) % 60) % 20 == 0):
             celular_alert.visibility = True
             celular_alert.startTimer()
         if (celular_alert.tocando):
@@ -267,17 +271,20 @@ def main():
                 celular_alert.visibility = False
                 celular_alert.tocando = False
                 target.score -= 70
+                agenteEscrita.escreveLog(['ATENDEUERRADO', -70])
             if (celular_alert.visibility is True and celular_alert.tocando is True and keys[K_c] and car.speed <= 0.4):
                 celular_alert.visibility = False
                 celular_alert.tocando = False
-                target.score += 200
+                target.score += 250
+                agenteEscrita.escreveLog(['ATENDEU', 200])
             if (not celular_alert.cel_time()):
                 celular_alert.visibility = False
                 celular_alert.tocando = False
                 target.score -= 100
+                agenteEscrita.escreveLog(['NAOATENDEU', -100])
 
         stop_alert.stop_car(car.speed)
-        if (int((target.timeleft / 60) % 60) % 15 == 0 and car.speed >= 0.1):
+        if (target.totalTime != 0 and int((target.totalTime / 60) % 60) % 15 == 0 and car.speed >= 0.1):
             stop_alert.visibility = True
 
         if (target.timeleft > 0 and stop_alert.visibility is True):
@@ -285,6 +292,7 @@ def main():
             if (car.speed < 0.1):
                 target.score += 200
                 stop_alert.visibility = False
+                agenteEscrita.escreveLog(['PAROU', 200])
             else:
                 target.score -= 1
 
@@ -303,12 +311,14 @@ def main():
             car.impact()
             target.car_crash()
             target.score -= 5
+            agenteEscrita.escreveLog(['BATIDA', '-5'])
 
         if pygame.sprite.spritecollide(car, target_s, True):
             target.claim_flag(gameControl.extraTimeValue)
             target.score += 50
             target.generate_finish()
             target_s.add(target)
+            agenteEscrita.escreveLog(['TEMPOEXTRA', gameControl.extraTimeValue])
 
         agenteDificuldade.analizaEntrada(target.score)
         clock.tick(64)

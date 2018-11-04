@@ -44,7 +44,6 @@ class Finish(pygame.sprite.Sprite):
     def claim_flag(self, extraTime = AICONFIG._L3_tempo_extra_dificil):
         self.score += FLAG_SCORE
         self.timeleft += extraTime * 60
-        print ('Got Extra Time:' + str(extraTime))
         if self.timeleft > COUNTDOWN_FULL:
             self.timeleft = COUNTDOWN_FULL
 #The player has crashed into another vehicle, deduct some points.
@@ -67,6 +66,7 @@ class Finish(pygame.sprite.Sprite):
 #Reset the state of the timer, score and respawn the flag.
     def reset(self):
         self.timeleft = COUNTDOWN_FULL
+        self.totalTime = 0
         self.score = 0
         self.generate_finish()
         
@@ -82,6 +82,7 @@ class Finish(pygame.sprite.Sprite):
         self.rect.topleft = self.x, self.y
         self.score = 0
         self.timeleft = COUNTDOWN_FULL
+        self.totalTime = 0
 
 #Update the timer and reposition the flag by offset.
     def update(self, cam_x, cam_y):
@@ -90,4 +91,5 @@ class Finish(pygame.sprite.Sprite):
             self.penalty_cool -= 1
         if (self.timeleft > 0):
             self.timeleft -= 1
+            self.totalTime += 1
         

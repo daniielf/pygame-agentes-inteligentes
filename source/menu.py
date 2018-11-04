@@ -53,6 +53,15 @@ class Menu:
 
         self.fullscreen = True
 
+        self.font = pygame.font.Font(None, 32)
+        self.input_box = pygame.Rect(100, 100, 140, 32)
+        self.color_inactive = pygame.Color('lightskyblue3')
+        self.color_active = pygame.Color('dodgerblue2')
+        self.color = self.color_inactive
+        self.active = False
+        self.text = ''
+        self.done = False
+
     def set_fullscreen(self):
         pressed_keys = pygame.key.get_pressed()
 
@@ -101,7 +110,25 @@ class Menu:
             for event in pygame.event.get():
                 if event.type == QUIT:
                     exit()
-            
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        self.active = False
+                        self.color = self.color_active if self.active else self.color_inactive
+                    elif event.key == pygame.K_BACKSPACE:
+                        self.text = self.text[:-1]
+                    else:
+                        self.text += event.unicode
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # If the user clicked on the input_box rect.
+                    if self.input_box.collidepoint(event.pos):
+                        # Toggle the active variable.
+                        self.active = not self.active
+                    else:
+                        self.active = False
+                    # Change the current color of the input box.
+                    self.color = self.color_active if self.active else self.color_inactive
+
+
             self.set_fullscreen()
 
             self.gameDisplay.fill(self.white)
@@ -110,9 +137,22 @@ class Menu:
             TextRect.center = ((self.display_width / 2), (self.display_height / 2))
             self.gameDisplay.blit(TextSurf, TextRect)
             # -Novo jogo
-            self.button("Novo Jogo", 250, 450, 100, 50, self.green, self.bright_green,self.select_fase)
+            if (not self.text == ''):
+                self.button("Novo Jogo", 250, 450, 100, 50, self.green, self.bright_green,self.select_fase)
             self.button("Ajuda", 450, 450, 100, 50, self.green, self.bright_green, self.help_menu)
             self.button("Sair", 650, 450, 100, 50, self.green, self.bright_green, exit)
+
+            txt_surface = self.font.render(self.text, True, self.color)
+            label_surface = self.font.render('Identificador:', True, self.color)
+            # Resize the box if the text is too long.3
+            width = max(200, txt_surface.get_width() + 10)
+            self.input_box.w = width
+
+            # Blit the text.
+            screen.blit(txt_surface,    (self.input_box.x + 5, self.input_box.y + 5))
+            screen.blit(label_surface,  (self.input_box.x + 5, self.input_box.y - 30))
+            # Blit the input_box rect.
+            pygame.draw.rect(screen, self.color, self.input_box, 2)
             pygame.display.update()
 
     def help_menu(self):
@@ -185,7 +225,7 @@ class Menu:
         self.level_selected = dificuldade
         if self.level_selected is not None:
             pygame.mixer.music.stop()
-            if main(screen, self.car_type, self.level_selected, self.track_selected) == False:
+            if main(screen, self.car_type, self.level_selected, self.track_selected, 1, self.text) == False:
                 self.main_menu()
 
     def select_level_menu(self):

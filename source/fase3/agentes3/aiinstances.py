@@ -57,7 +57,7 @@ class Agente_de_Escrita():
 
         textoSaida = ''
         for elem in dadosSaida:
-            textoSaida += (elem + ' ')
+            textoSaida += (str(elem) + ' ')
 
         textoSaida += '\n'
 
