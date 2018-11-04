@@ -800,11 +800,11 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
         if (track == 2 and game.semaforo2.opened):
             game.agente_tempo.analizaEntrada(game.chronometer.seconds)
             if (not game.check_point1):
-                screen.blit(load_image('checkflag.png'), (370, 270))
-            # if (not game.check_point2):
-            #     screen.blit(load_image('checkflag.png'), (400, 250))
-            # if (not game.check_point3):
-            #     screen.blit(load_image('checkflag.png'), (400, 250))
+                screen.blit(load_image('checkflag.png'), (360, 260))
+            if (not game.check_point2):
+                screen.blit(load_image('checkflag.png'), (500, 540))
+            if (not game.check_point3):
+                screen.blit(load_image('checkflag.png'), (565, 125))
         pygame.display.flip()
 
 

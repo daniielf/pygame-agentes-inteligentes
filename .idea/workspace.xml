@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6603d37a-804a-4261-8bcd-47c7c600ca93" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/source/fase3/MAIN.py" afterPath="$PROJECT_DIR$/source/fase3/MAIN.py" />
-      <change beforePath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" afterPath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
-      <change beforePath="$PROJECT_DIR$/source/fase3/gamemode.py" afterPath="$PROJECT_DIR$/source/fase3/gamemode.py" />
       <change beforePath="$PROJECT_DIR$/source/game.py" afterPath="$PROJECT_DIR$/source/game.py" />
       <change beforePath="$PROJECT_DIR$/source/logs/001.txt" afterPath="$PROJECT_DIR$/source/logs/001.txt" />
       <change beforePath="$PROJECT_DIR$/source/logs/log_fase2.txt" afterPath="$PROJECT_DIR$/source/logs/log_fase2.txt" />
@@ -22,8 +18,8 @@
       <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="802" column="60" lean-forward="false" selection-start-line="802" selection-start-column="60" selection-end-line="802" selection-end-column="60" />
+            <state relative-caret-position="423">
+              <caret line="806" column="66" lean-forward="false" selection-start-line="806" selection-start-column="66" selection-end-line="806" selection-end-column="66" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <element signature="e#4169#4653#0" expanded="false" />
@@ -682,8 +678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="802" column="60" lean-forward="false" selection-start-line="802" selection-start-column="60" selection-end-line="802" selection-end-column="60" />
+        <state relative-caret-position="423">
+          <caret line="806" column="66" lean-forward="false" selection-start-line="806" selection-start-column="66" selection-end-line="806" selection-end-column="66" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <element signature="e#4169#4653#0" expanded="false" />
