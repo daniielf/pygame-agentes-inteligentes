@@ -432,7 +432,6 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             self.time = self.map_time[0][0]
             self.chronometer.start(self.time)
             self.semaforo = Semaforo(3)
-            print 'IS TRACK 1'
             self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + _userid + '.txt', _userid, '1')
             self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_tentativas, 'gte', self.adjustLevel)
             self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_batidas, 'gte', self.displayInfractionAlert)
@@ -455,7 +454,9 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             obstacle4 = Cone((580, 640))
             obstacle5 = Cone((640, 395))
             obstacle6 = Cone((640, 615))
-            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/log_fase2.txt', _userid, '1')
+
+            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + _userid + '.txt', _userid, '1')
+
             self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_tentativas, 'gte', self.adjustLevel)
             self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_batidas, 'gte', self.displayInfractionAlert)
             self.agente_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_tempo_restante, 'lte', self.displayTimeHelpAlert_2)
@@ -485,6 +486,8 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
 
             self.semaforo2 = Semaforo(3)
             self.semaforo2.pos = (200, 380)
+            self.agente_escrita.escreveLog(['NOVOJOGO', str(int(self.chronometer.seconds))])  # ESCREVE 'NOVOJOGO' PARA O JOGADOR
+
         def track_03(self):
             self.track = 3
 
@@ -523,7 +526,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 self.displayTimeHelpAlertTimer = self.chronometer.seconds
                 self.displayTimeHelpAlertStarted = True
             if (not self.displayTimeHelpAlertDone):
-                screen.blit(load_image('help2.bmp'), (50, 100))
+                screen.blit(load_image('help2.bmp'), (50, 400))
             if (self.displayTimeHelpAlertTimer - 5 >= self.chronometer.seconds):
                 self.displayTimeHelpAlertDone = True
 
@@ -729,9 +732,6 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             if fullscreen: screen = pygame.display.set_mode((1024,768), FULLSCREEN, 32)
             else: screen = pygame.display.set_mode((1024,768), 0, 32)
 
-
-
-        print track
         if (track == 1):
             game.semaforo.abre_semaforo()
             game.semaforo.show()

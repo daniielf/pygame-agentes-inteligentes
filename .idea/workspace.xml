@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6603d37a-804a-4261-8bcd-47c7c600ca93" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" afterPath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
       <change beforePath="$PROJECT_DIR$/source/game.py" afterPath="$PROJECT_DIR$/source/game.py" />
       <change beforePath="$PROJECT_DIR$/source/logs/001.txt" afterPath="$PROJECT_DIR$/source/logs/001.txt" />
-      <change beforePath="$PROJECT_DIR$/source/logs/log_fase2.txt" afterPath="$PROJECT_DIR$/source/logs/log_fase2.txt" />
+      <change beforePath="$PROJECT_DIR$/source/logs/log_fase1.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/source/logs/log_fase2.txt" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +20,8 @@
       <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="806" column="66" lean-forward="false" selection-start-line="806" selection-start-column="66" selection-end-line="806" selection-end-column="66" />
+            <state relative-caret-position="290">
+              <caret line="480" column="0" lean-forward="true" selection-start-line="480" selection-start-column="0" selection-end-line="480" selection-end-column="0" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <element signature="e#4169#4653#0" expanded="false" />
@@ -64,8 +66,8 @@
       <file leaf-file-name="aiconfig.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -97,9 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chronometer</find>
-      <find>chronometer2</find>
-      <find>keys[K_m]</find>
       <find>keys</find>
       <find>track 2</find>
       <find>press</find>
@@ -127,6 +126,9 @@
       <find>self.flaggs</find>
       <find>track</find>
       <find>check</find>
+      <find>print</find>
+      <find>agente_tempo</find>
+      <find>displayTimeHelpAlert_2</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -143,10 +145,10 @@
         <option value="$PROJECT_DIR$/source/agentes/aiinstances.py" />
         <option value="$PROJECT_DIR$/source/menu.py" />
         <option value="$PROJECT_DIR$/source/agentes/aiconfig.py" />
-        <option value="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
         <option value="$PROJECT_DIR$/source/fase3/MAIN.py" />
         <option value="$PROJECT_DIR$/source/fase3/gamemode.py" />
         <option value="$PROJECT_DIR$/source/fase3/leis_transito.py" />
+        <option value="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
         <option value="$PROJECT_DIR$/source/game.py" />
       </list>
     </option>
@@ -296,14 +298,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.011093502" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12202853" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -641,14 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/leis_transito.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
@@ -676,10 +669,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="806" column="66" lean-forward="false" selection-start-line="806" selection-start-column="66" selection-end-line="806" selection-end-column="66" />
+        <state relative-caret-position="290">
+          <caret line="480" column="0" lean-forward="true" selection-start-line="480" selection-start-column="0" selection-end-line="480" selection-end-column="0" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <element signature="e#4169#4653#0" expanded="false" />
