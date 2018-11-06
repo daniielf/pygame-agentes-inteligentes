@@ -232,6 +232,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                         self.movement_speed = (self.max_speed/8 + self.movement_speed/4)
                         self.chocks += 1
                         self.tempoDescontado += self.timeStrikeValue
+                        self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
                         car.sound.play()
                         self.chock_up_key = True
                         self.chock_down_key = False
@@ -245,6 +246,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                         self.movement_speed = -self.max_speed/8 + self.movement_speed/2
                         self.chocks += 1
                         self.tempoDescontado += self.timeStrikeValue
+                        self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
                         car.sound.play()
                         self.chock_down_key = True
                         self.chock_up_key = False
@@ -430,6 +432,8 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             self.time = self.map_time[0][0]
             self.chronometer.start(self.time)
             self.semaforo = Semaforo(3)
+
+
             self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + _userid + '.txt', _userid, '1')
             self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_tentativas, 'gte', self.adjustLevel)
             self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L1_PARAMETRO_batidas, 'gte', self.displayInfractionAlert)
@@ -451,8 +455,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             obstacle5 = Cone((640, 395))
             obstacle6 = Cone((640, 615))
 
-            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + _userid + '.txt', _userid, '1')
-
+            self.agente_escrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + _userid + '.txt', _userid, '2')
             self.agente_dificuldade = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_tentativas, 'gte', self.adjustLevel)
             self.agente_feedback = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_batidas, 'gte', self.displayInfractionAlert)
             self.agente_tempo = AI_INSTANCES.Agente_Interativo(CONFIG._L2_PARAMETRO_tempo_restante, 'lte', self.displayTimeHelpAlert_2)
@@ -631,15 +634,15 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 if not self.in_check_point:
                     if self.track_map.get_at((int(car.x), int(car.y))) == (0, 255, 255, 255):
                         self.in_check_point = True
-                        self.check_point1 = not self.check_point1
+                        self.check_point1 = True
 
                     if self.track_map.get_at((int(car.x), int(car.y))) == (255, 255, 0, 255):
                         self.in_check_point = True
-                        self.check_point2 = not self.check_point2
+                        self.check_point2 = True
 
                     if self.track_map.get_at((int(car.x), int(car.y))) == (255, 255, 255, 255):
                         self.in_check_point = True
-                        self.check_point3 = not self.check_point3
+                        self.check_point3 = True
 
                 if self.track_map.get_at((int(car.x), int(car.y))) != (0, 255, 255, 255) \
                         and self.track_map.get_at((int(car.x), int(car.y))) != (255, 255, 0, 255) \

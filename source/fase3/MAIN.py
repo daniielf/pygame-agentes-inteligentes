@@ -67,8 +67,6 @@ class GameControl:
 
 
 gameControl = GameControl()
-agenteDificuldade = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_pontos, 'gte', gameControl.setHardmode)
-
 
 
 # Main function.
@@ -127,7 +125,10 @@ bound_alert_s = pygame.sprite.Group()
 menu_alert_s = pygame.sprite.Group()
 
 def main(id = '001'):
+
+    agenteDificuldade = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_pontos, 'gte', gameControl.setHardmode)
     agenteEscrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + id + '.txt', id, 3)
+
     running = True
     # generate tiles
     for tile_num in range(0, len(maps.map_tile)):
@@ -158,6 +159,7 @@ def main(id = '001'):
 
     cam.set_pos(car.x, car.y)
 
+    end = False
     while running:
         # Render loop.
         # Check for menu/reset, (keyup event - trigger ONCE)
@@ -171,9 +173,11 @@ def main(id = '001'):
                         info.visibility = True
                 if (keys[K_p]):
                     agenteEscrita.escreveLog(['REINICIOU', str(target.score)])
+                    end = False
                     car.reset()
                     target.reset()
                 if (keys[K_q]):
+                    agenteEscrita.escreveLog(['SAIU', '-'])
                     pygame.quit()
                     sys.exit(0)
                 if (keys[K_z]):  # atende ligacao
@@ -254,8 +258,10 @@ def main(id = '001'):
             timer_alert_s.draw(screen)
             car.speed = 0
             text_score = font.render('Pontuacao Final: ' + str(target.score), 1, (224, 16, 16))
-            agenteEscrita.escreveLog(['TERMINOU', str(target.score)])
-            textpos_score = text_fps.get_rect(centery=CENTER_H + 30, centerx=CENTER_W)
+            textpos_score = text_fps.get_rect(centery=CENTER_H , centerx=CENTER_W - 100)
+            if end is False:
+                end = True
+                agenteEscrita.escreveLog(['TERMINOU', str(target.score)])
 
         celular_alert.grass(screen.get_at(((int(CENTER_W - 5), int(CENTER_H - 5)))).g, car.speed)
         if (target.totalTime > 300 and int((target.totalTime / 60) % 60) % 20 == 0):

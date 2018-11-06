@@ -3,9 +3,9 @@ import datetime
 
 ## PADROES DE COMPARACAO
 # 'eq' : IGUAL
-# 'gte' : MAIOR QUE
+# 'gte' : MAIOR IGUAL QUE
 # 'gt' : MAIOR
-# 'lte' : MENOR QUE
+# 'lte' : MENOR IGUAL QUE
 # 'lt' : MENOR
 
 def comparaValoresPadronizado(comparacao, valor_parametro, valor_entrada):
