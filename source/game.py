@@ -550,11 +550,12 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 write_in_screen('%1.2f' % tempo_decorrido, (0, 0, 0), 20, (400,215))
                 write_in_screen('%d' % tempo_descontado, (220, 0, 0), 20, (400, 250))
                 write_in_screen('%1.2f' % tempo_final, (0, 150, 0), 25, (400, 280))
-
+                if (not self.wroteRegistry):
+                    self.wroteRegistry = True
+                    self.agente_escrita.escreveLog(
+                        ['VENCEU', str(int(self.chronometer.seconds))])  # ESCREVE VITORIA PARA O JOGADOR
                 if botaozinho_rect.collidepoint(mouse_pos) and pygame.mouse.get_pressed()[0]:
-                    if (not self.wroteRegistry):
-                        self.wroteRegistry = True
-                        self.agente_escrita.escreveLog(['VENCEU', str(int(self.chronometer.seconds))])  # ESCREVE VITORIA PARA O JOGADOR
+
                     fase = self.shift_track()
                     return fase
                 return
@@ -563,6 +564,10 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 lose_list = load_image('perdeu1.bmp', 1, [((x,0),(384,237)) \
                                                           for x in xrange(0, 1152, 384)])
                 image = lose_list[0]
+                if (not self.wroteRegistry):
+                    self.wroteRegistry = True
+                    self.agente_escrita.escreveLog(
+                        ['PERDEU', str(self.chronometer.seconds)])  # ESCREVE 'PERDEU' PARA O JOGADOR
                 if 218 <= mouse_pos[0] <= 392 and 352 <= mouse_pos[1] <= 368:
                     image = lose_list[1]
                     if pygame.mouse.get_pressed()[0]:
@@ -575,9 +580,6 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 elif 425 <= mouse_pos[0] <= 570 and 352 <= mouse_pos[1] <= 368:
                     image = lose_list[2]
                     if pygame.mouse.get_pressed()[0]:
-                        if (not self.wroteRegistry):
-                            self.wroteRegistry = True
-                            self.agente_escrita.escreveLog(['PERDEU', str(self.chronometer.seconds)])  # ESCREVE 'PERDEU' PARA O JOGADOR
                         return False
 
                 screen.blit(image, (200, 150))
