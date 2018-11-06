@@ -232,7 +232,8 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                         self.movement_speed = (self.max_speed/8 + self.movement_speed/4)
                         self.chocks += 1
                         self.tempoDescontado += self.timeStrikeValue
-                        self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
+                        if (self.collideCallback != None):
+                            self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
                         car.sound.play()
                         self.chock_up_key = True
                         self.chock_down_key = False
@@ -246,7 +247,8 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                         self.movement_speed = -self.max_speed/8 + self.movement_speed/2
                         self.chocks += 1
                         self.tempoDescontado += self.timeStrikeValue
-                        self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
+                        if (self.collideCallback != None):
+                            self.collideCallback(['INFRACAO', '-' + str(self.timeStrikeValue)])
                         car.sound.play()
                         self.chock_down_key = True
                         self.chock_up_key = False
@@ -494,9 +496,11 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
         def shift_track(self):
             if self.track == 1:
                 self.track_02()
+                self.wroteRegistry = False
                 return True
             if self.track == 2:
                 self.track_03()
+                self.wroteRegistry = False
                 return True
             if self.track == 3:
                 return False
@@ -548,12 +552,10 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                 write_in_screen('%1.2f' % tempo_final, (0, 150, 0), 25, (400, 280))
 
                 if botaozinho_rect.collidepoint(mouse_pos) and pygame.mouse.get_pressed()[0]:
-                    print('CLICOU')
                     if (not self.wroteRegistry):
                         self.wroteRegistry = True
                         self.agente_escrita.escreveLog(['VENCEU', str(int(self.chronometer.seconds))])  # ESCREVE VITORIA PARA O JOGADOR
                     fase = self.shift_track()
-                    print ('CHANGE FASE:', fase)
                     return fase
                 return
 
@@ -610,6 +612,7 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
                     return self.box(car, 'lose')
 
             if self.track == 2:
+                car.setCollideCallback(self.agente_escrita.escreveLog)
                 for object in self.obstacles:
                     screen.blit(object.image, (object.rect.x, object.rect.y))
                     car.collid(object, 'cone')
@@ -691,8 +694,10 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
     game.level = level
 
     if (track == 1):
+        tentatives = 0
         game.track_01()
     if (track == 2):
+        tentatives = 0
         game.track_02()
     if (track == 3):
         main3.main(_userid)
