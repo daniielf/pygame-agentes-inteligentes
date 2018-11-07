@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6603d37a-804a-4261-8bcd-47c7c600ca93" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/source/logs/11111.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/source/logs/134518461371111.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/source/logs/14863337701.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/source/logs/22222.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/source/logs/333333.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/source/logs/444444.txt" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/source/fase3/MAIN.py" afterPath="$PROJECT_DIR$/source/fase3/MAIN.py" />
+      <change beforePath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" afterPath="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
       <change beforePath="$PROJECT_DIR$/source/game.py" afterPath="$PROJECT_DIR$/source/game.py" />
-      <change beforePath="$PROJECT_DIR$/source/logs/13291895746.txt" afterPath="$PROJECT_DIR$/source/logs/13291895746.txt" />
       <change beforePath="$PROJECT_DIR$/source/logs/15875841745.txt" afterPath="$PROJECT_DIR$/source/logs/15875841745.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,32 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/game.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="569" column="101" lean-forward="false" selection-start-line="569" selection-start-column="101" selection-end-line="569" selection-end-column="101" />
-              <folding>
-                <element signature="e#4052#4536#0" expanded="false" />
-                <element signature="e#4594#6006#0" expanded="false" />
-                <element signature="e#6058#6297#0" expanded="false" />
-                <element signature="e#6347#6672#0" expanded="false" />
-                <element signature="e#6728#7055#0" expanded="false" />
-                <element signature="e#7101#7160#0" expanded="false" />
-                <element signature="e#7220#7407#0" expanded="false" />
-                <element signature="e#7467#8002#0" expanded="false" />
-                <element signature="e#12463#12623#0" expanded="false" />
-                <element signature="e#12650#13694#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="aiconfig.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/agentes/aiconfig.py">
+        <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="26" />
+            <state relative-caret-position="408">
+              <caret line="24" column="81" lean-forward="false" selection-start-line="24" selection-start-column="81" selection-end-line="24" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -89,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MAIN.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MAIN.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/fase3/MAIN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4454">
-              <caret line="282" column="45" lean-forward="false" selection-start-line="282" selection-start-column="45" selection-end-line="282" selection-end-column="45" />
+            <state relative-caret-position="1573">
+              <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
               <folding>
                 <element signature="e#1178#1188#0" expanded="true" />
               </folding>
@@ -105,11 +91,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_user</find>
-      <find>_id</find>
-      <find>escreve</find>
-      <find>fase</find>
-      <find>_p</find>
       <find>K_p</find>
       <find>terminou</find>
       <find>final</find>
@@ -135,6 +116,11 @@
       <find>venceu</find>
       <find>shift</find>
       <find>Vitoria</find>
+      <find>mouse</find>
+      <find>hard</find>
+      <find>pontos_hardmode</find>
+      <find>_c</find>
+      <find>stop</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -150,13 +136,13 @@
         <option value="$PROJECT_DIR$/source/fase3/bounds.py" />
         <option value="$PROJECT_DIR$/source/agentes/aiconfig.py" />
         <option value="$PROJECT_DIR$/source/fase3/leis_transito.py" />
-        <option value="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
         <option value="$PROJECT_DIR$/source/menu.py" />
         <option value="$PROJECT_DIR$/source/fase3/gamemode.py" />
         <option value="$PROJECT_DIR$/source/fase3/agentes3/aiinstances.py" />
         <option value="$PROJECT_DIR$/source/agentes/aiinstances.py" />
-        <option value="$PROJECT_DIR$/source/fase3/MAIN.py" />
         <option value="$PROJECT_DIR$/source/game.py" />
+        <option value="$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py" />
+        <option value="$PROJECT_DIR$/source/fase3/MAIN.py" />
       </list>
     </option>
   </component>
@@ -170,7 +156,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -183,7 +169,39 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tcc-git" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcc-git" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcc-git" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcc-git" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcc-git" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcc-git" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="fase3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tcc-git" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tcc-git" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="fase3" type="462c0819:PsiDirectoryNode" />
+              <item name="agentes3" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -268,12 +286,12 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25356576" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25356576" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -589,13 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/menu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -618,16 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/fase3/MAIN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4454">
-          <caret line="282" column="45" lean-forward="false" selection-start-line="282" selection-start-column="45" selection-end-line="282" selection-end-column="45" />
-          <folding>
-            <element signature="e#1178#1188#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/menu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3621">
@@ -646,14 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/agentes/aiconfig.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/fase3/gamemode.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
@@ -664,19 +657,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="569" column="101" lean-forward="false" selection-start-line="569" selection-start-column="101" selection-end-line="569" selection-end-column="101" />
+        <state relative-caret-position="277">
+          <caret line="801" column="73" lean-forward="false" selection-start-line="801" selection-start-column="73" selection-end-line="801" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/agentes/aiconfig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/agentes3/aiconfig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="81" lean-forward="false" selection-start-line="24" selection-start-column="81" selection-end-line="24" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/fase3/MAIN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1573">
+          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding>
-            <element signature="e#4052#4536#0" expanded="false" />
-            <element signature="e#4594#6006#0" expanded="false" />
-            <element signature="e#6058#6297#0" expanded="false" />
-            <element signature="e#6347#6672#0" expanded="false" />
-            <element signature="e#6728#7055#0" expanded="false" />
-            <element signature="e#7101#7160#0" expanded="false" />
-            <element signature="e#7220#7407#0" expanded="false" />
-            <element signature="e#7467#8002#0" expanded="false" />
-            <element signature="e#12463#12623#0" expanded="false" />
-            <element signature="e#12650#13694#0" expanded="false" />
+            <element signature="e#1178#1188#0" expanded="true" />
           </folding>
         </state>
       </provider>

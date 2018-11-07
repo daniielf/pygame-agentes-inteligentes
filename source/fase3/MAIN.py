@@ -53,17 +53,32 @@ from agentes3 import aiconfig as AI_CONFIG
 
 class GameControl:
     def __init__(self):
-        self.hardMode = False
+        self.veiculos_hardmode = False
+        self.extratime_hardmode = False
+        self.pontos_hardmode = False
+
         self.extraTimeValue = AI_CONFIG._L3_tempo_extra_facil
         self.quantidadeVeiculos = AI_CONFIG._L3_quantidade_veiculos_facil
+        self.pontosChamadaAtendida = AI_CONFIG._L3_ponto_atender_facil
+        self.pontosPararCarro = AI_CONFIG._L3_ponto_parar_facil
 
-    def setHardmode(self):
-        if (self.hardMode is False):
-            self.hardMode = True
-            self.extraTimeValue = AI_CONFIG._L3_tempo_extra_dificil
+    def setVeiculosHardmode(self):
+        if (self.veiculos_hardmode is False):
+            self.veiculos_hardmode = True
             self.quantidadeVeiculos = AI_CONFIG._L3_quantidade_veiculos_dificil
             for count in range(0, gameControl.quantidadeVeiculos):
                 traffic_s.add(traffic.Traffic())
+
+    def setExtraTimeHardmode(self):
+        if (self.extratime_hardmode is False):
+            self.extratime_hardmode = True
+            self.extraTimeValue = AI_CONFIG._L3_tempo_extra_dificil
+
+    def setPontosHardmode(self):
+        if (self.pontos_hardmode is False):
+            self.pontos_hardmode = True
+            self.extraTimeValue = AI_CONFIG._L3_tempo_extra_dificil
+
 
 
 gameControl = GameControl()
@@ -126,8 +141,15 @@ menu_alert_s = pygame.sprite.Group()
 
 def main(id = '001'):
 
-    agenteDificuldade = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_pontos, 'gte', gameControl.setHardmode)
+    agentePontosGanho = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_pontos, 'gte', gameControl.setVeiculosHardmode)
+    agenteTempoGasto = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_tempogasto, 'gte', gameControl.setExtraTimeHardmode)
+    agenteChamadasAtendidas = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_chamadas_atentidas, 'gte', gameControl.setPontosHardmode)
+    agenteParadas = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_paradas, 'gte', gameControl.setPontosHardmode)
     agenteEscrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + id + '.txt', id, 3)
+
+
+    totalChamadasAtendidas = 0
+    totalParadas = 0
 
     running = True
     # generate tiles
@@ -281,8 +303,9 @@ def main(id = '001'):
             if (celular_alert.visibility is True and celular_alert.tocando is True and keys[K_c] and car.speed <= 0.4):
                 celular_alert.visibility = False
                 celular_alert.tocando = False
-                target.score += 250
+                target.score += gameControl.pontosChamadaAtendida
                 agenteEscrita.escreveLog(['ATENDEU', 200])
+                agenteChamadasAtendidas.analizaEntrada(totalChamadasAtendidas)
             if (not celular_alert.cel_time()):
                 celular_alert.visibility = False
                 celular_alert.tocando = False
@@ -299,6 +322,7 @@ def main(id = '001'):
                 target.score += 200
                 stop_alert.visibility = False
                 agenteEscrita.escreveLog(['PAROU', 200])
+                agenteParadas.analizaEntrada(totalParadas)
             else:
                 target.score -= 1
 
@@ -326,7 +350,8 @@ def main(id = '001'):
             target_s.add(target)
             agenteEscrita.escreveLog(['TEMPOEXTRA', gameControl.extraTimeValue])
 
-        agenteDificuldade.analizaEntrada(target.score)
+        agentePontosGanho.analizaEntrada(target.score)
+        agenteTempoGasto.analizaEntrada(target.totalTime)
         clock.tick(64)
 
 

@@ -802,7 +802,6 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
         y1 = cos(car.rotation_angule * pi / 180) * car.movement_direction
         car.x += x1 * movement
         car.y += y1 * movement
-        mouse = pygame.mouse.get_pos()
 
         if (game.track == 2 and game.semaforo2.opened):
             game.agente_tempo.analizaEntrada(game.chronometer.seconds)
@@ -813,5 +812,3 @@ def main(screen, car_type, level, track, retry = 1, userID = '001'):
             if (not game.check_point3):
                 screen.blit(load_image('checkflag.png'), (565, 125))
         pygame.display.flip()
-
-
