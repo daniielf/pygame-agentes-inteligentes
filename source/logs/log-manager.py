@@ -1,6 +1,6 @@
 from __future__ import division
 
-_id = '19157538727'
+_id = '13766566717'
 
 filename = str(_id) + '.txt'
 
@@ -100,8 +100,14 @@ while (file_line):
 
     file_line = file.readline()
 
-for game in _level_resumes:
-    print (game)
+
+def sortMode(list):
+    return list[0]
+
+_level_resumes.sort(key=sortMode)
+#
+# for game in _level_resumes:
+#     print (game)
 
 
 file.close()
@@ -142,31 +148,41 @@ if (l3_totalTries > 0):
 #
 #
 # print '\n\n -- Win Level 1 --'
+
+#
 # for time in l1_temposVitoria:
 #     print 'Tempo Restante: ' + str(time)
-#
+
 # print '\n\n -- Win Level 2 --'
 # for time in l2_temposVitoria:
 #     print 'Tempo Restante: ' + str(time)
-#
-#
-# _l3_totalPontos = 0
-# print '\n\n -- Win Level 3 --'
-# for points in l3_pontosObtidos:
-#     print 'Pontos Obtidos: ' + str(points)
-#     _l3_totalPontos += points
-#
-# _l3_pontosMedia = _l3_totalPontos / l3_totalTries
 
+
+_l3_totalPontos = 0
+# print '\n\n -- Win Level 3 --'
+for points in l3_pontosObtidos:
+    # print 'Pontos Obtidos: ' + str(points)
+    _l3_totalPontos += int(points)
+
+_l3_pontosMedia = 0
+if (l3_totalTries > 0):
+    _l3_pontosMedia = _l3_totalPontos / l3_totalTries
 
 
 ##
 
 ## ARQUIVO DE RESUMO PESSOAL
-# personalResumeFile = open(_id + '_resumo.txt', 'w+')
-# personalResumeFile.write('RESUMO DO JOGADOR : ' + _id + '\n')
-# personalResumeFile.write()
+personalResumeFile = open('resumos/' + _id + '_resumo.txt', 'w')
+personalResumeFile.write('RESUMO DO JOGADOR : ' + _id + '\n')
+personalResumeFile.write('LEVEL | INFRACOES | VIT/DER | TEMPO RES. / PONTOS | DATA \n')
+for line in _level_resumes:
+    personalResumeFile.write(str(line[0]) + ' ' + str(line[1]) + ' ' + str(line[2]) + ' ' + str(line[3]) + ' ' + str(line[4]) + '\n')
 
 
 ## ARQUIVO GERAL DOS JOGADORES
 # ID    L1-TRY   L1-INFRACOES   L1-WINS   L2-TRY  L2-INFRACOES  L2-WINS  (L1 + L2) INFRA/TRY  L3-TRY    L3-INFRACOES    L3-MEDIAPONTOS  L3 INFRA/TRY
+generalFile = open('resumos/resumoGeral.txt', 'a')
+generalFile.write(
+    _id + ' ' + str(l1_totalTries) + ' ' + str(l1_totalInfracoes) + ' ' + str(l1_totalWin) + ' ' + str(l2_totalTries) + ' ' + str(l2_totalInfracoes) + ' ' + str(l2_totalWin) + ' ' + str(_infracoesPorPartida)
+    + ' ' +str(l3_totalTries) + ' ' + str(l3_totalInfracoes) + ' ' + str(_l3_pontosMedia) + ' ' + str(_3_infracoesPorPartida) + '\n'
+)
