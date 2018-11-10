@@ -10,7 +10,6 @@ import time
 import agentes.aiconfig as CONFIG
 import agentes.aiinstances as AI_INSTANCES
 
-
 def main(screen, car_type, level, track, retry = 1, userID = '001'):
     tentatives = retry
     _userid = userID
