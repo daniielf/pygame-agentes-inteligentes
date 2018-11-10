@@ -1,6 +1,6 @@
 from __future__ import division
 
-_id = '13766566717'
+_id = ''
 
 filename = str(_id) + '.txt'
 
