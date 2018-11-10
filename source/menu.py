@@ -31,11 +31,11 @@ class Menu:
 
         self.car_type = 1
 
-        self.help_buttons = load_image('ajuda.png', 2, [((x,0),(26,118))\
-                                             for x in xrange(0, 78, 26)])
-        self.help_button = self.help_buttons[0]
-        self.help_size = self.help_button.get_size()
-        self.help_pos = (678, 40)
+        # self.help_buttons = load_image('ajuda.png', 2, [((x,0),(26,118))\
+        #                                      for x in xrange(0, 78, 26)])
+        # self.help_button = self.help_buttons[0]
+        # self.help_size = self.help_button.get_size()
+        # self.help_pos = (678, 40)
 
         self.exit_buttons = load_image('sair.png', 2, [((x,0),(111,74))\
                                              for x in xrange(0, 333, 111)])
@@ -139,7 +139,7 @@ class Menu:
             # -Novo jogo
             if (not self.text == ''):
                 self.button("Novo Jogo", 250, 450, 100, 50, self.green, self.bright_green,self.select_fase)
-            self.button("Ajuda", 450, 450, 100, 50, self.green, self.bright_green, self.help_menu)
+            # self.button("Ajuda", 450, 450, 100, 50, self.green, self.bright_green, self.help_menu)
             self.button("Sair", 650, 450, 100, 50, self.green, self.bright_green, exit)
 
             txt_surface = self.font.render(self.text, True, self.color)

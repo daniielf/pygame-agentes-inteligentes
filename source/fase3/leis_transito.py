@@ -127,7 +127,7 @@ class CelularAlert(pygame.sprite.Sprite):
 
     def cel_time(self):
         if (self.tocando):
-            if (self.chron.seconds > 0) :
+            if (self.chron.seconds > 0.5) :
                 return True
             else:
                 return False
