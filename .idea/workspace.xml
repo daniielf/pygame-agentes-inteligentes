@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6603d37a-804a-4261-8bcd-47c7c600ca93" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/source/logs/11111.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/source/logs/134518461371111.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/source/logs/22222.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/source/logs/333333.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/source/logs/444444.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/source/logs/11573220779.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/source/logs/12934576710.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/source/logs/13291895746.txt" afterPath="$PROJECT_DIR$/source/logs/13291895746.txt" />
+      <change beforePath="$PROJECT_DIR$/source/logs/13766566717.txt" afterPath="$PROJECT_DIR$/source/logs/13766566717.txt" />
+      <change beforePath="$PROJECT_DIR$/source/logs/14881475746.txt" afterPath="$PROJECT_DIR$/source/logs/14881475746.txt" />
+      <change beforePath="$PROJECT_DIR$/source/logs/16050218730.txt" afterPath="$PROJECT_DIR$/source/logs/16050218730.txt" />
+      <change beforePath="$PROJECT_DIR$/source/logs/breno.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/source/logs/log-manager.py" afterPath="$PROJECT_DIR$/source/logs/log-manager.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +33,8 @@
       <file leaf-file-name="log-manager.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/logs/log-manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -674,8 +675,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/logs/log-manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding />
         </state>
       </provider>
