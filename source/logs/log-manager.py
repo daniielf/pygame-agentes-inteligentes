@@ -1,6 +1,6 @@
 from __future__ import division
 
-_id = '10823510751'
+_id = '19157538727'
 
 filename = str(_id) + '.txt'
 
@@ -81,12 +81,13 @@ while (file_line):
 
 
     if (infoArray[1] == '3'):
-        if (infoArray[2] == 'TERMINOU'):
+        if (infoArray[2] == 'REINICIOU' or infoArray[2] == 'NOVOJOGO'):
             index += 1
-            l3_totalTries +=1
-            l3_pontosObtidos.append(infoArray[3])
-
+            l3_totalTries += 1
             _level_resumes.append([3,0,'-', 0, infoArray[4] + ' ' + infoArray[5]])
+
+        if (infoArray[2] == 'TERMINOU'):
+            l3_pontosObtidos.append(infoArray[3])
             _level_resumes[index][3] = infoArray[3]
 
         if (infoArray[2] == 'BATIDA' or infoArray[2] == 'NAOATENDEU' or infoArray[2] == 'ATENDEUERRADO'):
@@ -96,7 +97,6 @@ while (file_line):
 
         if (infoArray[2] == 'ATENDEU' or infoArray[2] == 'PAROU'):
             l3_acoesPositivass += 1
-
 
     file_line = file.readline()
 

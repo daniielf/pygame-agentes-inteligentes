@@ -147,6 +147,7 @@ def main(id = '001'):
     agenteParadas = AI_INSTANCES.Agente_Interativo(AI_CONFIG._L3_PARAMETRO_paradas, 'gte', gameControl.setPontosHardmode)
     agenteEscrita = AI_INSTANCES.Agente_de_Escrita('./logs/' + id + '.txt', id, 3)
 
+    agenteEscrita.escreveLog(['NOVOJOGO', str(0)])
 
     totalChamadasAtendidas = 0
     totalParadas = 0
@@ -194,7 +195,6 @@ def main(id = '001'):
                     else:
                         info.visibility = True
                 if (keys[K_p]):
-                    agenteEscrita.escreveLog(['REINICIOU', str(target.score)])
                     end = False
                     car.reset()
                     target.reset()

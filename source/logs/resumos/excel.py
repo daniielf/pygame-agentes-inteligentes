@@ -1,8 +1,8 @@
 import xlsxwriter as excelWriter
 
 ### INDIVIDUAL
-# id = '10823510751'
-# filename =  id + '_resumo.txt'
+id = '19157538727'
+# filename = id + '_resumo.txt'
 # file = open(filename, 'r')
 #
 # file_line = file.readline() ## useless line
@@ -48,7 +48,7 @@ file = open(filename, 'r')
 row = 0
 col = 0
 
-excelFile = excelWriter.Workbook('resumoGeral_excel.xlsx')
+excelFile = excelWriter.Workbook('resumoGeral_excel2.xlsx')
 _worksheet = excelFile.add_worksheet()
 
 _worksheet.write(row,col, 'Relatorio dos Jogadores')
