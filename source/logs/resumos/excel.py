@@ -1,7 +1,7 @@
 import xlsxwriter as excelWriter
 
 ### INDIVIDUAL
-# id = '15875841745'
+# id = '10823510751'
 # filename =  id + '_resumo.txt'
 # file = open(filename, 'r')
 #
@@ -69,5 +69,17 @@ _worksheet.write(row, 11, 'INFRAC. P/ TENTATIVA LEVEL 3')
 
 file_line = file.readline() ## useless line
 file_line = file.readline()
+row += 1
+
+while (file_line):
+    infoArray = file_line.split(' ')
+    col = 0
+
+    for value in infoArray:
+        _worksheet.write(row, col, value)
+        col += 1
+
+    row += 1
+    file_line = file.readline()
 
 excelFile.close()
