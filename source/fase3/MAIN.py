@@ -175,6 +175,7 @@ def main(id = '001'):
     menu_alert_s.add(info)
     # load traffic
     traffic.initialize(CENTER_W, CENTER_H)
+
     for count in range(0, gameControl.quantidadeVeiculos):
         traffic_s.add(traffic.Traffic())
 
@@ -251,6 +252,7 @@ def main(id = '001'):
 
         # Conditional renders/effects
         car.grass(screen.get_at(((int(CENTER_W - 5), int(CENTER_H - 5)))).g)
+        tracks_s = []
         if car.tracks:
             tracks_s.add(tracks.Track(cam.x + CENTER_W, cam.y + CENTER_H, car.dir))
 
@@ -283,6 +285,10 @@ def main(id = '001'):
             textpos_score = text_fps.get_rect(centery=CENTER_H , centerx=CENTER_W - 100)
             if end is False:
                 end = True
+                gameControl.extraTimeValue = AI_CONFIG._L3_tempo_extra_facil
+                gameControl.quantidadeVeiculos = AI_CONFIG._L3_quantidade_veiculos_facil
+                gameControl.pontosChamadaAtendida = AI_CONFIG._L3_ponto_atender_facil
+                gameControl.pontosPararCarro = AI_CONFIG._L3_ponto_parar_facil
                 agenteEscrita.escreveLog(['TERMINOU', str(target.score)])
 
         celular_alert.grass(screen.get_at(((int(CENTER_W - 5), int(CENTER_H - 5)))).g, car.speed)
